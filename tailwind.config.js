@@ -19,6 +19,7 @@ module.exports = {
       // => @media (min-width: 480px) { ... }
     },
     padding: {
+      1.5: '6px',
       sm: '8px',
       md: '16px',
       lg: '24px',
@@ -38,7 +39,7 @@ module.exports = {
       primary: '#2F798C',
       secondary: '#646464',
       white: '#ffffff',
-      // 'danger': '#e3342f',
+      danger: '#CB4539',
     },
     color: {
       primary: '#2F798C',

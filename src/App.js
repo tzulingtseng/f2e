@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import Banner from './components/Banner';
 import Footer from './components/Footer';
 // pages
 import Home from './pages/Home';
@@ -15,7 +14,6 @@ function App() {
       <Router>
         <>
           <Navbar />
-          <Banner />
           <Switch>
             <Route path="/f2e/attractions">
               <Attractions />

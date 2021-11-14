@@ -5,17 +5,31 @@ import spot1 from '../images/spot1.png';
 import spot2 from '../images/spot2.png';
 import spot3 from '../images/spot3.png';
 import location from '../images/location.png';
+import { BiChevronRight } from 'react-icons/bi';
+import BannerHome from '../components/BannerHome';
 
 function Home() {
   return (
     <>
+      <BannerHome />
       <div className="container mx-auto">
         <div className="max-w-2xl mx-auto py-lg px-xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="flex flex-wrap items-center">
-            <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
-              熱門景點
-            </h2>
-            <img src={hotfire} />
+          <div className="flex justify-between items-center">
+            <div className="flex flex-wrap items-center">
+              <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
+                熱門景點
+              </h2>
+              <img src={hotfire} />
+            </div>
+            <div>
+              <Link
+                to="/f2e/attractions"
+                className="flex flex-wrap items-center text-danger"
+              >
+                <p>更多熱門景點</p>
+                <BiChevronRight />
+              </Link>
+            </div>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
             <div className="group shadow-xl rounded-xl">
@@ -34,13 +48,7 @@ function Home() {
                   </p>
                 </div>
                 <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                  <a href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                    ></span>
-                    高美濕地＿高美野生動物保護區
-                  </a>
+                  <a href="#">高美濕地＿高美野生動物保護區</a>
                 </h3>
                 <p className="text-sm text-gray-500 pb-sm">開放時間</p>
                 <p className="text-sm text-gray-500 pb-sm">
@@ -75,13 +83,7 @@ function Home() {
                   </p>
                 </div>
                 <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                  <a href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                    ></span>
-                    高美濕地＿高美野生動物保護區
-                  </a>
+                  <a href="#">高美濕地＿高美野生動物保護區</a>
                 </h3>
                 <p className="text-sm text-gray-500 pb-sm">開放時間</p>
                 <p className="text-sm text-gray-500 pb-sm">
@@ -116,13 +118,7 @@ function Home() {
                   </p>
                 </div>
                 <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                  <a href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                    ></span>
-                    高美濕地＿高美野生動物保護區
-                  </a>
+                  <a href="#">高美濕地＿高美野生動物保護區</a>
                 </h3>
                 <p className="text-sm text-gray-500 pb-sm">開放時間</p>
                 <p className="text-sm text-gray-500 pb-sm">
@@ -146,11 +142,22 @@ function Home() {
       </div>
       <div className="container mx-auto">
         <div className="max-w-2xl mx-auto py-lg px-xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="flex flex-wrap items-center">
-            <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
-              熱門美食
-            </h2>
-            <img src={hotfire} />
+          <div className="flex justify-between items-center">
+            <div className="flex flex-wrap items-center">
+              <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
+                熱門美食
+              </h2>
+              <img src={hotfire} />
+            </div>
+            <div>
+              <Link
+                to="/f2e/food"
+                className="flex flex-wrap items-center text-danger"
+              >
+                <p>更多熱門美食</p>
+                <BiChevronRight />
+              </Link>
+            </div>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
             <div className="group shadow-xl rounded-xl">
@@ -169,13 +176,7 @@ function Home() {
                   </p>
                 </div>
                 <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                  <a href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                    ></span>
-                    高美濕地＿高美野生動物保護區
-                  </a>
+                  <a href="#">高美濕地＿高美野生動物保護區</a>
                 </h3>
                 <p className="text-sm text-gray-500 pb-sm">開放時間</p>
                 <p className="text-sm text-gray-500 pb-sm">
@@ -210,13 +211,7 @@ function Home() {
                   </p>
                 </div>
                 <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                  <a href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                    ></span>
-                    高美濕地＿高美野生動物保護區
-                  </a>
+                  <a href="#">高美濕地＿高美野生動物保護區</a>
                 </h3>
                 <p className="text-sm text-gray-500 pb-sm">開放時間</p>
                 <p className="text-sm text-gray-500 pb-sm">
@@ -251,13 +246,7 @@ function Home() {
                   </p>
                 </div>
                 <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                  <a href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                    ></span>
-                    高美濕地＿高美野生動物保護區
-                  </a>
+                  <a href="#">高美濕地＿高美野生動物保護區</a>
                 </h3>
                 <p className="text-sm text-gray-500 pb-sm">開放時間</p>
                 <p className="text-sm text-gray-500 pb-sm">
@@ -281,11 +270,22 @@ function Home() {
       </div>
       <div className="container mx-auto">
         <div className="max-w-2xl mx-auto py-lg px-xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="flex flex-wrap items-center">
-            <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
-              熱門活動
-            </h2>
-            <img src={hotfire} />
+          <div className="flex justify-between items-center">
+            <div className="flex flex-wrap items-center">
+              <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
+                熱門活動
+              </h2>
+              <img src={hotfire} />
+            </div>
+            <div>
+              <Link
+                to="/f2e/activities"
+                className="flex flex-wrap items-center text-danger"
+              >
+                <p>更多熱門活動</p>
+                <BiChevronRight />
+              </Link>
+            </div>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
             <div className="group shadow-xl rounded-xl">
@@ -304,13 +304,7 @@ function Home() {
                   </p>
                 </div>
                 <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                  <a href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                    ></span>
-                    高美濕地＿高美野生動物保護區
-                  </a>
+                  <a href="#">高美濕地＿高美野生動物保護區</a>
                 </h3>
                 <p className="text-sm text-gray-500 pb-sm">開放時間</p>
                 <p className="text-sm text-gray-500 pb-sm">
@@ -345,13 +339,7 @@ function Home() {
                   </p>
                 </div>
                 <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                  <a href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                    ></span>
-                    高美濕地＿高美野生動物保護區
-                  </a>
+                  <a href="#">高美濕地＿高美野生動物保護區</a>
                 </h3>
                 <p className="text-sm text-gray-500 pb-sm">開放時間</p>
                 <p className="text-sm text-gray-500 pb-sm">
@@ -386,13 +374,7 @@ function Home() {
                   </p>
                 </div>
                 <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                  <a href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                    ></span>
-                    高美濕地＿高美野生動物保護區
-                  </a>
+                  <a href="#">高美濕地＿高美野生動物保護區</a>
                 </h3>
                 <p className="text-sm text-gray-500 pb-sm">開放時間</p>
                 <p className="text-sm text-gray-500 pb-sm">
