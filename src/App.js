@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Attractions from './pages/Attractions';
 import Activities from './pages/Activities';
 import Food from './pages/Food';
+import Detail from './pages/Detail';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route path="/f2e/food">
               <Food />
+            </Route>
+            <Route path="/f2e/detail">
+              <Detail />
             </Route>
             <Route path="/f2e">
               <Home />

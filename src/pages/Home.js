@@ -1,14 +1,55 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; //Link標籤要變成link
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; //a標籤要變成link
+import axios from 'axios';
+import jsSHA from 'jssha';
+// 引入icon
 import hotfire from '../images/hotfire.svg';
+import location from '../images/location.png';
+import { BiChevronRight } from 'react-icons/bi';
+// 引入components
+import BannerHome from '../components/BannerHome';
+// 引入照片
 import spot1 from '../images/spot1.png';
 import spot2 from '../images/spot2.png';
 import spot3 from '../images/spot3.png';
-import location from '../images/location.png';
-import { BiChevronRight } from 'react-icons/bi';
-import BannerHome from '../components/BannerHome';
 
 function Home() {
+  useEffect(() => {
+    async function getAttractionsData() {
+      try {
+        const data = await axios.get(
+          'https://ptx.transportdata.tw/MOTC/v2/Rail/TRA/Station?$top=10&$format=JSON',
+          {
+            headers: getAuthorizationHeader(),
+          }
+        );
+        console.log(data);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getAttractionsData();
+  }, []);
+
+  const getAuthorizationHeader = () => {
+    //  填入自己 ID、KEY 開始
+    let AppID = `${process.env.REACT_APP_TDX_attractions_apiID}`;
+    let AppKey = `${process.env.REACT_APP_TDX_attractions_apiKey}`;
+    //  填入自己 ID、KEY 結束
+    let GMTString = new Date().toGMTString();
+    let ShaObj = new jsSHA('SHA-1', 'TEXT');
+    ShaObj.setHMACKey(AppKey, 'TEXT');
+    ShaObj.update('x-date: ' + GMTString);
+    let HMAC = ShaObj.getHMAC('B64');
+    let Authorization =
+      'hmac username="' +
+      AppID +
+      '", algorithm="hmac-sha1", headers="x-date", signature="' +
+      HMAC +
+      '"';
+    return { Authorization: Authorization, 'X-Date': GMTString };
+  };
+
   return (
     <>
       <BannerHome />
