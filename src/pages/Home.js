@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; //a標籤要變成link
 import axios from 'axios';
+import env from 'react-dotenv';
 import jsSHA from 'jssha';
 import $ from 'jquery';
-import slick from 'slick-carousel';
 import Slider from 'react-slick';
 
 // 引入icon
@@ -63,8 +63,11 @@ function Home() {
 
   const getAuthorizationHeader = () => {
     //  填入自己 ID、KEY 開始
-    let AppID = `"${process.env.REACT_APP_TDX_attractions_apiID}"`;
-    let AppKey = `"${process.env.REACT_APP_TDX_attractions_apiKey}"`;
+    // let AppID = '1091b7947f8c4fb9b62d235438b5cf18';
+    // let AppKey = 'QNGy17E_hvfTkWF347_iWsYLcb0';
+    let AppID = env.APP_ID;
+    let AppKey = env.APP_KEY;
+    console.log('AppID', AppID);
     //  填入自己 ID、KEY 結束
     let GMTString = new Date().toGMTString();
     let ShaObj = new jsSHA('SHA-1', 'TEXT');
