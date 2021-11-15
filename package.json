@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "react-dotenv && craco start",
-    "build": "craco build",
+    "build": "react-dotenv && craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "predeploy": "yarn run build",
