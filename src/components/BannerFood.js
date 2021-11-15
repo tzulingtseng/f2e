@@ -27,7 +27,7 @@ function Banner() {
                 <option>宜蘭縣</option>
               </select>
             </div>
-            <div className=" w-9 h-9 bg-primary rounded-md ">
+            <div className=" w-9 h-9 bg-primary rounded-md cursor-pointer">
               <BiSearch className="text-white leading-9 text-4xl" />
             </div>
           </div>

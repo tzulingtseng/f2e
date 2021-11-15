@@ -20,7 +20,7 @@ function Banner() {
               />
             </div>
             <div className="mr-2">
-              <select className="shadow appearance-none py-1.5 px-md text-secondary ">
+              <select className="shadow appearance-none py-1.5 px-md text-secondary cursor-pointer">
                 <option>全部縣市</option>
                 <option>台北市</option>
                 <option>桃園市</option>

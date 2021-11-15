@@ -67,3 +67,10 @@ nav {
 .btn:hover span {
   transform: translateX(0);
 }
+.short-words {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

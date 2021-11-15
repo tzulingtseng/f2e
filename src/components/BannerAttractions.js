@@ -28,7 +28,7 @@ function Banner() {
               </select>
             </div>
             <div className=" w-9 h-9 bg-primary rounded-md ">
-              <BiSearch className="text-white leading-9 text-4xl" />
+              <BiSearch className="text-white leading-9 text-4xl cursor-pointer" />
             </div>
           </div>
         </div>
