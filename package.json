@@ -28,8 +28,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-dotenv && craco start",
-    "build": "react-dotenv && craco build",
+    "start": "craco start",
+    "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "predeploy": "yarn run build",

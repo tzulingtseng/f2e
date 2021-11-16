@@ -65,8 +65,8 @@ function Home() {
     //  填入自己 ID、KEY 開始
     // let AppID = '1091b7947f8c4fb9b62d235438b5cf18';
     // let AppKey = 'QNGy17E_hvfTkWF347_iWsYLcb0';
-    let AppID = env.APP_ID;
-    let AppKey = env.APP_KEY;
+    let AppID = process.env.REACT_APP_TDX_APP_ID;
+    let AppKey = process.env.REACT_APP_TDX_APP_KEY;
     console.log('AppID', AppID);
     //  填入自己 ID、KEY 結束
     let GMTString = new Date().toGMTString();
