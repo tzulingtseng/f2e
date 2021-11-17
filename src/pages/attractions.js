@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom'; //a標籤要變成link
+import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom'; //a標籤要變成link
 import axios from 'axios';
 import jsSHA from 'jssha';
 import BannerAttractions from '../components/BannerAttractions';
@@ -10,21 +10,13 @@ import { useMyContext } from '../context/context';
 import Pagination from '../components/Pagination';
 
 function Attractions() {
-  const { currentPageURL } = useParams();
-  const { posts, setPosts, postsPerPage, currentPage, myRef, setPage } =
-    useMyContext();
-  setPage(currentPageURL);
+  const { posts, setPosts, postsPerPage, currentPage, myRef } = useMyContext();
 
   let history = useHistory();
   useEffect(() => {
     history.push(`/f2e/attractions/${currentPage}`);
   }, [currentPage]);
-  // const [allAttractions, setAllAttractions] = useState([]);
-  // pagination
 
-  // const [posts, setPosts] = useState([]); // 全部的資料
-  // const [currentPage, setCurrentPage] = useState(1); // 目前在第幾頁，預設第一頁
-  // const [postsPerPage, setPostsPerPage] = useState(5); //每頁的顯示的資料筆數
   useEffect(() => {
     // 有篩選縣市的景點資料
     // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Taipei?$top=30&$format=JSON

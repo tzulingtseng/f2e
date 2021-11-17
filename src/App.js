@@ -14,16 +14,15 @@ import Detail from './pages/Detail';
 function App() {
   const [posts, setPosts] = useState([]); // 全部的資料
   const [postsPerPage] = useState(5); //每頁的顯示的資料筆數
-  const [page, setPage] = useState(); // 偵測網址上頁碼的變化
-  const [currentPage, setCurrentPage] = useState(); // 目前在第幾頁，預設第一頁
+  const [currentPage, setCurrentPage] = useState(1); // 目前在第幾頁，預設第一頁
 
   // 如果 currentPage 沒有設定，那就預設第一頁
   // 偵測網址上的變化
   useEffect(() => {
-    setCurrentPage(parseInt(page, 10) || 1);
-  }, [page]);
+    setCurrentPage(parseInt(currentPage, 10) || 1);
+  }, [currentPage]);
 
-  const myRef = useRef(null);
+  const myRef = useRef();
   const executeScroll = () => myRef.current.scrollIntoView();
 
   const paginate = (pageNumber) => {
@@ -42,15 +41,13 @@ function App() {
           setCurrentPage,
           paginate,
           myRef,
-          page,
-          setPage,
         }}
       >
         <Router>
           <>
             <Navbar />
             <Switch>
-              <Route path="/f2e/attractions/:currentPageURL">
+              <Route path="/f2e/attractions">
                 <Attractions />
               </Route>
               <Route path="/f2e/activities">
