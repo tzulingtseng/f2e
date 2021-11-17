@@ -1,7 +1,11 @@
-import React from 'react';
+import { useContext, useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
+import { useMyContext } from '../context/context';
 
 function Banner() {
+  const { searchWord, setSearchWord } = useMyContext();
+
+  console.log('inputText', searchWord);
   return (
     <>
       <div className="banner-attractions flex justify-center items-center">
@@ -17,6 +21,10 @@ function Banner() {
                 className="w-96 shadow appearance-none py-sm px-md text-secondary leading-tight"
                 type="text"
                 placeholder="你想去哪裡？請輸入關鍵字"
+                value={searchWord}
+                onChange={(e) => {
+                  setSearchWord(e.target.value);
+                }}
               />
             </div>
             <div className="mr-2">

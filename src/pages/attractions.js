@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom'; //a標籤要變成link
 import axios from 'axios';
 import jsSHA from 'jssha';
@@ -10,18 +10,23 @@ import { useMyContext } from '../context/context';
 import Pagination from '../components/Pagination';
 
 function Attractions() {
-  const { posts, setPosts, postsPerPage, currentPage, myRef } = useMyContext();
-
-  let history = useHistory();
-  useEffect(() => {
-    history.push(`/f2e/attractions/${currentPage}`);
-  }, [currentPage]);
+  const {
+    posts,
+    setPosts,
+    postsPerPage,
+    currentPage,
+    myRef,
+    displayPosts,
+    setDisplayPosts,
+    searchWord,
+  } = useMyContext();
 
   useEffect(() => {
     // 有篩選縣市的景點資料
     // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Taipei?$top=30&$format=JSON
     // 全部景點資料
     // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$format=JSON
+    // 'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$filter=contains(Name,'${inputText}')&$top=3&$format=JSON'
     const getAllAttractionsData = async () => {
       try {
         const postsRes = await axios.get(
@@ -32,24 +37,41 @@ function Attractions() {
         );
         console.log('postsRes', postsRes);
         setPosts(postsRes.data);
+        setDisplayPosts(postsRes.data);
       } catch (e) {
         console.log(e);
       }
     };
     getAllAttractionsData();
-    // console.log('allAttractions', posts);
-
-    // TODO：取得這一頁應該要有的資料
-    // page 1: 1-15 跳過0筆
-    // page 2: 16-30 跳過15筆
-    // LIMIT: 要取幾筆資料
-    // OFFSET: 要跳過幾筆資料
   }, []);
+
+  const handleSearch = (posts, searchWord) => {
+    let newPosts = [];
+    if (searchWord) {
+      newPosts = posts.filter((item) => {
+        return item.Name.includes(searchWord);
+      });
+    } else {
+      newPosts = [...posts];
+    }
+    return newPosts;
+  };
+
+  useEffect(() => {
+    let newPosts = [];
+    // 處理搜尋
+    newPosts = handleSearch(posts, searchWord);
+    setDisplayPosts(newPosts);
+  }, [searchWord]);
+
+  let history = useHistory();
+  useEffect(() => {
+    history.push(`/f2e/attractions/${currentPage}`);
+  }, [currentPage]);
 
   const indexOfLastPost = currentPage * postsPerPage; // 20 = 2*10
   const indexOfFirstPost = indexOfLastPost - postsPerPage; // 10 = 20-10
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost); // 100.slice(10,20)
-  // console.log('currentPosts', currentPosts);
+  const currentPosts = displayPosts.slice(indexOfFirstPost, indexOfLastPost); // 100.slice(10,20)
 
   // API ID & KEY 加密
   const getAuthorizationHeader = () => {

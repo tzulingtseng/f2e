@@ -13,8 +13,11 @@ import Detail from './pages/Detail';
 
 function App() {
   const [posts, setPosts] = useState([]); // 全部的資料
+  const [displayPosts, setDisplayPosts] = useState([]); // 展示的資料
   const [postsPerPage] = useState(5); //每頁的顯示的資料筆數
   const [currentPage, setCurrentPage] = useState(1); // 目前在第幾頁，預設第一頁
+
+  const [searchWord, setSearchWord] = useState('');
 
   // 如果 currentPage 沒有設定，那就預設第一頁
   // 偵測網址上的變化
@@ -41,6 +44,10 @@ function App() {
           setCurrentPage,
           paginate,
           myRef,
+          searchWord,
+          setSearchWord,
+          displayPosts,
+          setDisplayPosts,
         }}
       >
         <Router>
