@@ -6,7 +6,7 @@ function Banner() {
     <>
       <div className="banner-home flex justify-center items-center">
         <div className="banner-mask"></div>
-        <div class="container relative text-center">
+        <div className="container relative text-center">
           <h1 className="text-5xl font-bold text-white mb-4">尋找臺灣</h1>
           <h2 className="text-2xl font-bold text-white mb-4">
             景點、 美食、 活動

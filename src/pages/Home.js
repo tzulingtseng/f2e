@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; //a標籤要變成link
 import axios from 'axios';
-import env from 'react-dotenv';
 import jsSHA from 'jssha';
-import $ from 'jquery';
 import Slider from 'react-slick';
 
 // 引入icon
@@ -12,10 +10,6 @@ import location from '../images/location.png';
 import { BiChevronRight } from 'react-icons/bi';
 // 引入components
 import BannerHome from '../components/BannerHome';
-// 引入照片
-import spot1 from '../images/spot1.png';
-import spot2 from '../images/spot2.png';
-import spot3 from '../images/spot3.png';
 
 function Home() {
   const [hotAttractionsData, setHotAttractionsData] = useState([]);
@@ -41,7 +35,7 @@ function Home() {
             headers: getAuthorizationHeader(),
           }
         );
-        console.log(foodData.data);
+        // console.log(foodData.data);
         setHotFoodData(foodData.data);
 
         // 活動 api
@@ -52,7 +46,7 @@ function Home() {
             headers: getAuthorizationHeader(),
           }
         );
-        console.log(activitiesData.data);
+        // console.log(activitiesData.data);
         setHotActivitiesData(activitiesData.data);
       } catch (e) {
         console.log(e);
@@ -61,13 +55,11 @@ function Home() {
     getData();
   }, []);
 
+  // API ID & KEY 加密
   const getAuthorizationHeader = () => {
     //  填入自己 ID、KEY 開始
-    // let AppID = '1091b7947f8c4fb9b62d235438b5cf18';
-    // let AppKey = 'QNGy17E_hvfTkWF347_iWsYLcb0';
     let AppID = process.env.REACT_APP_TDX_APP_ID;
     let AppKey = process.env.REACT_APP_TDX_APP_KEY;
-    console.log('AppID', AppID);
     //  填入自己 ID、KEY 結束
     let GMTString = new Date().toGMTString();
     let ShaObj = new jsSHA('SHA-1', 'TEXT');
