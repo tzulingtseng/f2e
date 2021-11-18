@@ -2,15 +2,144 @@ import React from 'react';
 import { useMyContext } from '../context/context';
 
 function Pagination() {
-  const { posts, postsPerPage, paginate, currentPage, setCurrentPage, myRef } =
-    useMyContext();
-  const totalPosts = posts.length;
+  const {
+    postsPerPage,
+    paginate,
+    currentPage,
+    setCurrentPage,
+    myRef,
+    displayPosts,
+    groupCount,
+    startPage,
+    setStartPage,
+  } = useMyContext();
+  const totalPosts = displayPosts.length;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
+
+  const getPages = () => {
+    let pages = [];
+    if (totalPages <= 10) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(
+          <button
+            className="hidden md:flex w-8 h-8 mx-1 justify-center items-center rounded-full border border-gray-200 bg-white text-black hover:border-gray-300"
+            href="#"
+            title="Page 1"
+            key={i}
+            onClick={() => paginate(i)}
+            style={{
+              backgroundColor: i === currentPage ? '#2F798C' : '',
+              color: i === currentPage ? '#ffffff' : '#2F798C',
+            }}
+          >
+            {i}
+          </button>
+        );
+      }
+    } else {
+      let pageLength = 0;
+      // 第一頁
+      pages.push(
+        <button
+          className="hidden md:flex w-8 h-8 mx-1 justify-center items-center rounded-full border border-gray-200 bg-white text-primary hover:border-gray-300"
+          href="#"
+          title="Page 1"
+          onClick={() => paginate(1)}
+          style={{
+            backgroundColor: 1 === currentPage ? '#2F798C' : '',
+            color: 1 === currentPage ? '#ffffff' : '#2F798C',
+          }}
+        >
+          1
+        </button>
+      );
+      if (groupCount + startPage > totalPages) {
+        pageLength = totalPages;
+      } else {
+        pageLength = groupCount + startPage;
+      }
+      // 前面省略号(当当前页码比分组的页码大时显示省略号)
+      if (currentPage >= groupCount) {
+        pages.push(
+          <button
+            className="hidden md:flex w-8 h-8 mx-1 justify-center items-center rounded-full border border-gray-200 bg-white text-primary hover:border-gray-300"
+            href="#"
+            title="Page 1"
+            key={-1}
+          >
+            ···
+          </button>
+        );
+      }
+      //非第一页和最后一页显示
+      console.log('pageLength', pageLength);
+      for (let i = startPage; i < pageLength; i++) {
+        if (i <= totalPages - 1 && i > 1) {
+          pages.push(
+            <button
+              className="hidden md:flex w-8 h-8 mx-1 justify-center items-center rounded-full border border-gray-200 bg-white text-black hover:border-gray-300"
+              href="#"
+              title={i}
+              key={i}
+              onClick={() => {
+                paginate(i);
+              }}
+              // onClick={
+              //   (e) => {
+              //     console.log('e', e.target.innerText);
+              //     e.paginate.bind(e.target.innerText, i);
+              //   }
+
+              //   // console.log(e.currentTarget.title);
+              // }
+              style={{
+                backgroundColor: i === currentPage ? '#2F798C' : '',
+                color: i === currentPage ? '#ffffff' : '#2F798C',
+              }}
+            >
+              {i}
+            </button>
+          );
+        }
+      }
+      // 後面省略號
+      if (totalPages - startPage >= groupCount + 1) {
+        pages.push(
+          <button
+            className="hidden md:flex w-8 h-8 mx-1 justify-center items-center rounded-full border border-gray-200 bg-white text-primary hover:border-gray-300"
+            href="#"
+            title="Page 1"
+            key={-2}
+          >
+            ···
+          </button>
+        );
+      }
+      // 最後一頁
+      pages.push(
+        <button
+          className="hidden md:flex w-8 h-8 mx-1 justify-center items-center rounded-full border border-gray-200 bg-white text-primary hover:border-gray-300"
+          href="#"
+          title="Page 1"
+          onClick={() => paginate(totalPages)}
+          style={{
+            backgroundColor: totalPages === currentPage ? '#2F798C' : '',
+            color: totalPages === currentPage ? '#ffffff' : '#2F798C',
+          }}
+        >
+          {totalPages}
+        </button>
+      );
+    }
+
+    return pages;
+  };
+
   const executeScroll = () => myRef.current.scrollIntoView();
 
   return (
@@ -62,7 +191,7 @@ function Pagination() {
               {number}
             </button>
           ))}
-
+          {/* {getPages()} */}
           <button
             className="flex w-6 h-6  ml-1 justify-center items-center rounded-full border border-gray-200 bg-white text-black hover:border-gray-30 text-primary"
             href="#"

@@ -19,18 +19,16 @@ function Attractions() {
     displayPosts,
     setDisplayPosts,
     searchWord,
+    setSearchWord,
+    searchCity,
+    setSearchCity,
   } = useMyContext();
 
   useEffect(() => {
-    // 有篩選縣市的景點資料
-    // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Taipei?$top=30&$format=JSON
-    // 全部景點資料
-    // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$format=JSON
-    // 'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$filter=contains(Name,'${inputText}')&$top=3&$format=JSON'
     const getAllAttractionsData = async () => {
       try {
         const postsRes = await axios.get(
-          'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$format=JSON',
+          'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=150&$format=JSON',
           {
             headers: getAuthorizationHeader(),
           }
@@ -44,25 +42,6 @@ function Attractions() {
     };
     getAllAttractionsData();
   }, []);
-
-  const handleSearch = (posts, searchWord) => {
-    let newPosts = [];
-    if (searchWord) {
-      newPosts = posts.filter((item) => {
-        return item.Name.includes(searchWord);
-      });
-    } else {
-      newPosts = [...posts];
-    }
-    return newPosts;
-  };
-
-  useEffect(() => {
-    let newPosts = [];
-    // 處理搜尋
-    newPosts = handleSearch(posts, searchWord);
-    setDisplayPosts(newPosts);
-  }, [searchWord]);
 
   let history = useHistory();
   useEffect(() => {
@@ -106,7 +85,10 @@ function Attractions() {
               <img src={hotfire} />
             </div>
             <p className="">
-              目前顯示 <span className="text-primary">15</span> 筆
+              總共 <span className="text-primary">{displayPosts.length}</span>{' '}
+              筆資料
+              {/* ，頁面顯示{' '}
+              <span className="text-primary">{postsPerPage}</span> 筆資料 */}
             </p>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
@@ -135,7 +117,7 @@ function Attractions() {
                   </p>
 
                   <Link
-                    to="/"
+                    to={`/f2e/detail/${item.ID}`}
                     className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
                   >
                     <span className="absolute inset-0 bg-primary"></span>
