@@ -1,10 +1,5 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useLocation,
-} from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import qs from 'querystring';
 
 import { MyContext } from './context/context';
@@ -13,6 +8,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import BackToTopButton from './components/BackToTopButton';
+import Spinner from './components/Spinner';
 // pages
 import Home from './pages/Home';
 import Attractions from './pages/Attractions';
@@ -40,14 +36,14 @@ function App() {
   // console.log('searchCity', searchCity);
   const [detail, setDetail] = useState([]);
 
+  // 載入指示的spinner動畫用的
+  const [isLoading, setIsLoading] = useState(true);
+
   // 如果 currentPage 沒有設定，那就預設第一頁
   // 偵測網址上的變化
   useEffect(() => {
     setCurrentPage(parseInt(currentPage, 10) || 1);
   }, [currentPage]);
-
-  const myRef = useRef();
-  const executeScroll = () => myRef.current.scrollIntoView();
 
   const paginate = (pageNumber) => {
     // if (currentPage >= groupCount) {
@@ -61,47 +57,7 @@ function App() {
     //   setStartPage(1);
     // }
     setCurrentPage(pageNumber);
-
-    executeScroll();
   };
-
-  // const handleSearch = (posts, searchWord) => {
-  //   let newPosts = [];
-  //   if (searchWord) {
-  //     newPosts = posts.filter((item) => {
-  //       return item.Name.includes(searchWord);
-  //     });
-  //   } else {
-  //     newPosts = [...posts];
-  //   }
-  //   return newPosts;
-  // };
-
-  // const handleSelect = (posts, searchCity) => {
-  //   let newPosts = [...posts];
-  //   if (searchCity) {
-  //     newPosts = [...newPosts].filter((item) => {
-  //       return item.Address.includes(searchCity);
-  //     });
-  //   }
-  //   return newPosts;
-  // };
-  // const handleSubmit = () => {
-  //   let newPosts = [];
-  //   // 處理文字搜尋
-  //   newPosts = handleSearch(posts, searchWord);
-  //   // 處理選擇搜尋
-  //   newPosts = handleSelect(newPosts, searchCity);
-  //   setDisplayPosts(newPosts);
-  // };
-  // useEffect(() => {
-  //   // let newPosts = [];
-  //   // // 處理文字搜尋
-  //   // newPosts = handleSearch(posts, searchWord);
-  //   // // 處理選擇搜尋
-  //   // newPosts = handleSelect(newPosts, searchCity);
-  //   // setDisplayPosts(newPosts);
-  // }, [searchWord, searchCity]);
 
   return (
     <>
@@ -113,7 +69,6 @@ function App() {
           currentPage,
           setCurrentPage,
           paginate,
-          myRef,
           searchWord,
           setSearchWord,
           displayPosts,
@@ -130,6 +85,8 @@ function App() {
           setSearchWordClick,
           searchCityClick,
           setSearchCityClick,
+          isLoading,
+          setIsLoading,
         }}
       >
         <Router>
@@ -149,7 +106,6 @@ function App() {
                 <Route path="/f2e/food">
                   <Food />
                 </Route>
-
                 <Route path="/f2e">
                   <Home />
                 </Route>

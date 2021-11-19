@@ -5,12 +5,17 @@ import jsSHA from 'jssha';
 import museum from '../images/museum.png';
 import map from '../images/map.png';
 import { useMyContext } from '../context/context';
+// 引入components
+import Spinner from '../components/Spinner';
 
 function Detail() {
   const { id } = useParams();
-  const { detail, setDetail } = useMyContext();
+  const { detail, setDetail, isLoading, setIsLoading } = useMyContext();
 
   useEffect(() => {
+    // 先開起載入指示器
+    setIsLoading(true);
+
     const getAllAttractionsData = async () => {
       try {
         const detailRes = await axios.get(
@@ -19,15 +24,19 @@ function Detail() {
             headers: getAuthorizationHeader(),
           }
         );
-        setDetail(detailRes.data);
-        // console.log('detailRes', detailRes.data);
-        console.log('detail', detail);
+        setDetail(detailRes.data[0]);
+        console.log('detailRes.data[0]', detailRes.data[0]);
       } catch (e) {
         console.log(e);
       }
     };
-    console.log('detail[0]', detail[0].Name);
+    // console.log('detail[0]', detail[0].Name);
     getAllAttractionsData();
+
+    // 1.5秒後關閉指示器
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
   }, [id]);
 
   // API ID & KEY 加密
@@ -49,34 +58,43 @@ function Detail() {
       '"';
     return { Authorization: Authorization, 'X-Date': GMTString };
   };
+  console.log('detail', detail);
+  console.log('detail.Picture', detail.Picture);
+  console.log('detail.Name', detail.Name);
 
   return (
     <>
-      <div className="container mx-auto padding-top">
-        <div className="grid grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 py-lg">
-          <div>
-            <img src={detail[0].Picture.PictureUrl1} />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div>
+          <div className="container mx-auto padding-top">
+            <div className="grid grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 py-lg">
+              <div>
+                <img src={detail.Picture.PictureUrl1} />
+              </div>
+              <div className="p-md">
+                <h2 className="text-3xl font-bold pb-md">{detail.Name}</h2>
+                <h2 className="text-2xl font-bold pb-md">資訊</h2>
+                <h3 className="text-lg font-semibold pb-sm">電話：</h3>
+                <p className="pb-sm">{detail.Phone}</p>
+                <h3 className="text-lg font-semibold pb-sm">地址：</h3>
+                <p className="pb-sm">{detail.Address}</p>
+                <h3 className="text-lg font-semibold pb-sm">開放時間：</h3>
+                <p>{detail.OpenTime}</p>
+              </div>
+            </div>
           </div>
-          <div className="p-md">
-            <h2 className="text-3xl font-bold pb-md">{detail[0].Name}</h2>
-            <h2 className="text-2xl font-bold pb-md">資訊</h2>
-            <h3 className="text-lg font-semibold pb-sm">電話：</h3>
-            <p className="pb-sm">{detail[0].Phone}</p>
-            <h3 className="text-lg font-semibold pb-sm">地址：</h3>
-            <p className="pb-sm">{detail[0].Address}</p>
-            <h3 className="text-lg font-semibold pb-sm">開放時間：</h3>
-            <p>{detail[0].OpenTime}</p>
+          <div className="bg-secondary">
+            <div className="container mx-auto pb-lg">
+              <h2 className="text-2xl font-bold py-md">介紹</h2>
+              <p>{detail.Description}</p>
+              <h2 className="text-2xl font-bold py-md">景點地圖</h2>
+              <img src={map} />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="bg-secondary">
-        <div className="container mx-auto pb-lg">
-          <h2 className="text-2xl font-bold pb-md">介紹</h2>
-          <p>{detail[0].Description}</p>
-          <h2 className="text-2xl font-bold py-md">景點地圖</h2>
-          <img src={map} />
-        </div>
-      </div>
+      )}
     </>
   );
 }

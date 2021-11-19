@@ -26,7 +26,7 @@ function BackToTopButton() {
   return (
     <>
       <div
-        class="rounded-full h-10 w-10 items-center justify-center border-2 border-primary cursor-pointer fixed bottom-20 right-8 z-50 opacity-50 hover:opacity-100 hover:bg-primary scrollToTop-animate"
+        className="rounded-full h-10 w-10 items-center justify-center border-2 border-primary cursor-pointer fixed bottom-20 right-8 z-50 opacity-50 hover:opacity-100 hover:bg-primary scrollToTop-animate"
         onClick={scrollToTop}
         style={{ display: showButton ? 'flex' : 'none' }}
       >
