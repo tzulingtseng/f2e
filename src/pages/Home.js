@@ -5,6 +5,7 @@ import jsSHA from 'jssha';
 import Slider from 'react-slick';
 
 // 引入icon
+import { AiOutlinePicture } from 'react-icons/ai';
 import hotfire from '../images/hotfire.svg';
 import location from '../images/location.png';
 import { BiChevronRight } from 'react-icons/bi';
@@ -97,7 +98,6 @@ function Home() {
               </Link>
             </div>
           </div>
-          {/* <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8 hotSlider"></div> */}
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 hotSlider">
             <Slider
               arrows={true}
@@ -129,42 +129,55 @@ function Home() {
               ]}
             >
               {hotAttractionsData.map((hotAttractions, i) => (
-                <div
-                  className="group shadow-xl rounded-xl px-sm"
-                  key={hotAttractions.ID}
-                >
-                  <div className="w-full h-60 bg-gray-200 rounded-t-xl overflow-hidden     group-hover:opacity-75 aspect-none">
-                    <img
-                      src={hotAttractions.Picture.PictureUrl1}
-                      alt=""
-                      className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
-                    />
-                  </div>
-                  <div className="m-6 ">
-                    <div className="pb-sm flex justify-start items-center">
-                      <img src={location} className="pr-sm" />
-                      <p className="text-sm text-gray-500 font-semibold text-sm short-words">
-                        {hotAttractions.Address}
+                <div className="group pr-lg " key={hotAttractions.ID}>
+                  <div className="shadow-md rounded-xl">
+                    {JSON.stringify(hotAttractions.Picture) === '{}' ||
+                    !hotAttractions.Picture.hasOwnProperty('PictureUrl1') ? (
+                      <div className="w-full h-60 bg-secondary rounded-t-xl overflow-hidden group-hover:opacity-75 aspect-none flex items-center text-secondary">
+                        <div className="mx-auto">
+                          <AiOutlinePicture className="text-7xl  mx-auto" />
+                          <p>此景點未提供照片</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="w-full h-60 bg-gray-200 rounded-t-xl overflow-hidden     group-hover:opacity-75 aspect-none">
+                        <img
+                          src={hotAttractions.Picture.PictureUrl1}
+                          alt=""
+                          className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
+                        />
+                      </div>
+                    )}
+                    <div className="m-6 pb-lg ">
+                      <div className="pb-sm flex justify-start items-center">
+                        <img src={location} className="pr-sm" />
+                        <p className="text-sm text-gray-500 font-semibold text-sm short-words">
+                          {hotAttractions.hasOwnProperty('Address')
+                            ? hotAttractions.Address
+                            : '詳見官網'}
+                        </p>
+                      </div>
+                      <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base short-words h-7">
+                        <a href="#">{hotAttractions.Name}</a>
+                      </h3>
+                      <p className="text-sm text-gray-500">開放時間</p>
+                      <p className="text-sm text-gray-500 pb-sm short-words h-7 leading-7">
+                        {hotAttractions.hasOwnProperty('OpenTime')
+                          ? hotAttractions.OpenTime
+                          : hotAttractions.StartTime.substring(0, 10)}
                       </p>
-                    </div>
-                    <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                      <a href="#">{hotAttractions.Name}</a>
-                    </h3>
-                    <p className="text-sm text-gray-500 pb-sm">開放時間</p>
-                    <p className="text-sm text-gray-500 pb-sm short-words h-6">
-                      {hotAttractions.OpenTime}
-                    </p>
 
-                    <Link
-                      to={`f2e/detail/${hotAttractions.ID}`}
-                      className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
-                    >
-                      <span className="absolute inset-0 bg-primary"></span>
-                      <span className="absolute inset-0 flex justify-center items-center tracking-widest font-medium">
+                      <Link
+                        to={`f2e/detail/${hotAttractions.ID}`}
+                        className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
+                      >
+                        <span className="absolute inset-0 bg-primary"></span>
+                        <span className="absolute inset-0 flex justify-center items-center tracking-widest font-medium">
+                          查看詳情
+                        </span>
                         查看詳情
-                      </span>
-                      查看詳情
-                    </Link>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -222,42 +235,55 @@ function Home() {
               ]}
             >
               {hotFoodData.map((hotFood, i) => (
-                <div
-                  className="group shadow-xl rounded-xl px-sm"
-                  key={hotFood.ID}
-                >
-                  <div className="w-full h-60 bg-gray-200 rounded-t-xl overflow-hidden     group-hover:opacity-75 aspect-none">
-                    <img
-                      src={hotFood.Picture.PictureUrl1}
-                      alt=""
-                      className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
-                    />
-                  </div>
-                  <div className="m-6 ">
-                    <div className="pb-sm flex justify-start items-center">
-                      <img src={location} className="pr-sm" />
-                      <p className="text-sm text-gray-500 font-semibold text-sm short-words">
-                        {hotFood.Address}
+                <div className="group pr-lg" key={hotFood.ID}>
+                  <div className="shadow-md rounded-xl">
+                    {JSON.stringify(hotFood.Picture) === '{}' ||
+                    !hotFood.Picture.hasOwnProperty('PictureUrl1') ? (
+                      <div className="w-full h-60 bg-secondary rounded-t-xl overflow-hidden group-hover:opacity-75 aspect-none flex items-center text-secondary">
+                        <div className="mx-auto">
+                          <AiOutlinePicture className="text-7xl  mx-auto" />
+                          <p>此景點未提供照片</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="w-full h-60 bg-gray-200 rounded-t-xl overflow-hidden     group-hover:opacity-75 aspect-none">
+                        <img
+                          src={hotFood.Picture.PictureUrl1}
+                          alt=""
+                          className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
+                        />
+                      </div>
+                    )}
+                    <div className="m-6 pb-lg">
+                      <div className="pb-sm flex justify-start items-center">
+                        <img src={location} className="pr-sm" />
+                        <p className="text-sm text-gray-500 font-semibold text-sm short-words">
+                          {hotFood.hasOwnProperty('Address')
+                            ? hotFood.Address
+                            : '詳見官網'}
+                        </p>
+                      </div>
+                      <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base short-words h-7">
+                        <a href="#">{hotFood.Name}</a>
+                      </h3>
+                      <p className="text-sm text-gray-500">開放時間</p>
+                      <p className="text-sm text-gray-500 pb-sm short-words h-7 leading-7">
+                        {hotFood.hasOwnProperty('OpenTime')
+                          ? hotFood.OpenTime
+                          : hotFood.StartTime.substring(0, 10)}
                       </p>
-                    </div>
-                    <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base">
-                      <a href="#">{hotFood.RestaurantName}</a>
-                    </h3>
-                    <p className="text-sm text-gray-500 pb-sm">開放時間</p>
-                    <p className="text-sm text-gray-500 pb-sm short-words h-6">
-                      {hotFood.OpenTime}
-                    </p>
 
-                    <Link
-                      to="/"
-                      className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
-                    >
-                      <span className="absolute inset-0 bg-primary"></span>
-                      <span className="absolute inset-0 flex justify-center items-center tracking-widest font-medium">
+                      <Link
+                        to="/"
+                        className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
+                      >
+                        <span className="absolute inset-0 bg-primary"></span>
+                        <span className="absolute inset-0 flex justify-center items-center tracking-widest font-medium">
+                          查看詳情
+                        </span>
                         查看詳情
-                      </span>
-                      查看詳情
-                    </Link>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -315,42 +341,53 @@ function Home() {
               ]}
             >
               {hotActivitiesData.map((hotActivities, i) => (
-                <div
-                  className="group shadow-xl rounded-xl px-sm"
-                  key={hotActivities.ID}
-                >
-                  <div className="w-full h-60 bg-gray-200 rounded-t-xl overflow-hidden     group-hover:opacity-75 aspect-none">
-                    <img
-                      src={hotActivities.Picture.PictureUrl1}
-                      alt=""
-                      className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
-                    />
-                  </div>
-                  <div className="m-6 ">
-                    <div className="pb-sm flex justify-start items-center">
-                      <img src={location} className="pr-sm" />
-                      <p className="text-sm text-gray-500 font-semibold text-sm short-words">
-                        {hotActivities.Location}
+                <div className="group pr-lg" key={hotActivities.ID}>
+                  <div className="shadow-md rounded-xl">
+                    {JSON.stringify(hotActivities.Picture) === '{}' ||
+                    !hotActivities.Picture.hasOwnProperty('PictureUrl1') ? (
+                      <div className="w-full h-60 bg-secondary rounded-t-xl overflow-hidden group-hover:opacity-75 aspect-none flex items-center text-secondary">
+                        <div className="mx-auto">
+                          <AiOutlinePicture className="text-7xl  mx-auto" />
+                          <p>此景點未提供照片</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="w-full h-60 bg-gray-200 rounded-t-xl overflow-hidden     group-hover:opacity-75 aspect-none">
+                        <img
+                          src={hotActivities.Picture.PictureUrl1}
+                          alt=""
+                          className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
+                        />
+                      </div>
+                    )}
+                    <div className="m-6 pb-lg">
+                      <div className="pb-sm flex justify-start items-center">
+                        <img src={location} className="pr-sm" />
+                        <p className="text-sm text-gray-500 font-semibold text-sm short-words">
+                          {hotActivities.Location}
+                        </p>
+                      </div>
+                      <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base short-words h-7">
+                        <a href="#">{hotActivities.Name}</a>
+                      </h3>
+                      <p className="text-sm text-gray-500">開放時間</p>
+                      <p className="text-sm text-gray-500 pb-sm short-words h-7 leading-7">
+                        {hotActivities.hasOwnProperty('OpenTime')
+                          ? hotActivities.OpenTime
+                          : hotActivities.StartTime.substring(0, 10)}
                       </p>
-                    </div>
-                    <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base short-words h-7">
-                      <a href="#">{hotActivities.Name}</a>
-                    </h3>
-                    <p className="text-sm text-gray-500 pb-sm">開放時間</p>
-                    <p className="text-sm text-gray-500 pb-sm short-words h-6">
-                      {hotActivities.StartTime.substring(0, 10)}
-                    </p>
 
-                    <Link
-                      to="/"
-                      className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
-                    >
-                      <span className="absolute inset-0 bg-primary"></span>
-                      <span className="absolute inset-0 flex justify-center items-center tracking-widest font-medium">
+                      <Link
+                        to="/"
+                        className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
+                      >
+                        <span className="absolute inset-0 bg-primary"></span>
+                        <span className="absolute inset-0 flex justify-center items-center tracking-widest font-medium">
+                          查看詳情
+                        </span>
                         查看詳情
-                      </span>
-                      查看詳情
-                    </Link>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}

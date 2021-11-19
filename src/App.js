@@ -22,6 +22,7 @@ import Detail from './pages/Detail';
 function App() {
   const [posts, setPosts] = useState([]); // 全部的資料
   const [displayPosts, setDisplayPosts] = useState([]); // 展示的資料
+  const [currentPagePosts, setCurrentPagePosts] = useState([]);
   const [postsPerPage] = useState(15); //每頁的顯示的資料筆數
   const [currentPage, setCurrentPage] = useState(1); // 目前在第幾頁，預設第一頁
   const [groupCount, setGroupCount] = useState(5);
@@ -30,9 +31,11 @@ function App() {
   // 分頁開始頁碼
 
   const [searchWord, setSearchWord] = useState('');
+  const [searchWordClick, setSearchWordClick] = useState('');
   // console.log('searchWord', searchWord);
 
   const [searchCity, setSearchCity] = useState('');
+  const [searchCityClick, setSearchCityClick] = useState('');
   // console.log('searchCity', searchCity);
   const [detail, setDetail] = useState([]);
 
@@ -61,27 +64,27 @@ function App() {
     executeScroll();
   };
 
-  const handleSearch = (posts, searchWord) => {
-    let newPosts = [];
-    if (searchWord) {
-      newPosts = posts.filter((item) => {
-        return item.Name.includes(searchWord);
-      });
-    } else {
-      newPosts = [...posts];
-    }
-    return newPosts;
-  };
+  // const handleSearch = (posts, searchWord) => {
+  //   let newPosts = [];
+  //   if (searchWord) {
+  //     newPosts = posts.filter((item) => {
+  //       return item.Name.includes(searchWord);
+  //     });
+  //   } else {
+  //     newPosts = [...posts];
+  //   }
+  //   return newPosts;
+  // };
 
-  const handleSelect = (posts, searchCity) => {
-    let newPosts = [...posts];
-    if (searchCity) {
-      newPosts = [...newPosts].filter((item) => {
-        return item.Address.includes(searchCity);
-      });
-    }
-    return newPosts;
-  };
+  // const handleSelect = (posts, searchCity) => {
+  //   let newPosts = [...posts];
+  //   if (searchCity) {
+  //     newPosts = [...newPosts].filter((item) => {
+  //       return item.Address.includes(searchCity);
+  //     });
+  //   }
+  //   return newPosts;
+  // };
   // const handleSubmit = () => {
   //   let newPosts = [];
   //   // 處理文字搜尋
@@ -90,14 +93,14 @@ function App() {
   //   newPosts = handleSelect(newPosts, searchCity);
   //   setDisplayPosts(newPosts);
   // };
-  useEffect(() => {
-    let newPosts = [];
-    // 處理文字搜尋
-    newPosts = handleSearch(posts, searchWord);
-    // 處理選擇搜尋
-    newPosts = handleSelect(newPosts, searchCity);
-    setDisplayPosts(newPosts);
-  }, [searchWord, searchCity]);
+  // useEffect(() => {
+  //   // let newPosts = [];
+  //   // // 處理文字搜尋
+  //   // newPosts = handleSearch(posts, searchWord);
+  //   // // 處理選擇搜尋
+  //   // newPosts = handleSelect(newPosts, searchCity);
+  //   // setDisplayPosts(newPosts);
+  // }, [searchWord, searchCity]);
 
   return (
     <>
@@ -114,12 +117,18 @@ function App() {
           setSearchWord,
           displayPosts,
           setDisplayPosts,
+          currentPagePosts,
+          setCurrentPagePosts,
           searchCity,
           setSearchCity,
           groupCount,
           startPage,
           detail,
           setDetail,
+          searchWordClick,
+          setSearchWordClick,
+          searchCityClick,
+          setSearchCityClick,
         }}
       >
         <Router>

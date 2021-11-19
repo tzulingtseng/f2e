@@ -16,9 +16,9 @@ function Pagination() {
   const totalPosts = displayPosts.length;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
-  const pageNumbers = [];
+  const pages = [];
   for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
+    pages.push(i);
   }
 
   const getPages = () => {
@@ -144,7 +144,7 @@ function Pagination() {
 
   return (
     <>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto pb-lg">
         <div
           className="flex flex-row flex-nowrap justify-between md:justify-center items-center"
           aria-label="Pagination"
@@ -176,7 +176,7 @@ function Pagination() {
               <path d="M238.475 475.535l7.071-7.07c4.686-4.686 4.686-12.284 0-16.971L50.053 256 245.546 60.506c4.686-4.686 4.686-12.284 0-16.971l-7.071-7.07c-4.686-4.686-12.284-4.686-16.97 0L10.454 247.515c-4.686 4.686-4.686 12.284 0 16.971l211.051 211.05c4.686 4.686 12.284 4.686 16.97-.001z"></path>
             </svg>
           </button>
-          {pageNumbers.map((number) => (
+          {pages.map((number) => (
             <button
               className="hidden md:flex w-8 h-8 mx-1 justify-center items-center rounded-full border border-gray-200 bg-white text-black hover:border-gray-300"
               href="#"
