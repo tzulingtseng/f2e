@@ -113,7 +113,7 @@ function Food() {
           </div>
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8">
             {currentPosts.map((item, i) => (
-              <div className="group shadow-xl rounded-xl" key={item.ID}>
+              <div className="group shadow-md rounded-xl" key={item.ID}>
                 {JSON.stringify(item.Picture) === '{}' ||
                 !item.Picture.hasOwnProperty('PictureUrl1') ? (
                   <div className="w-full h-60 bg-secondary rounded-t-xl overflow-hidden group-hover:opacity-75 aspect-none flex items-center text-secondary">
