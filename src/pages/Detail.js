@@ -10,11 +10,12 @@ import Spinner from '../components/Spinner';
 
 function Detail() {
   const { id } = useParams();
-  const { detail, setDetail, isLoading, setIsLoading } = useMyContext();
+  const { detail, setDetail } = useMyContext();
+  const [detailIsLoading, setDetailIsLoading] = useState(true);
 
   useEffect(() => {
     // 先開起載入指示器
-    setIsLoading(true);
+    setDetailIsLoading(true);
 
     const getAllAttractionsData = async () => {
       try {
@@ -35,9 +36,9 @@ function Detail() {
 
     // 1.5秒後關閉指示器
     setTimeout(() => {
-      setIsLoading(false);
+      setDetailIsLoading(false);
     }, 1500);
-  }, [id]);
+  }, []);
 
   // API ID & KEY 加密
   const getAuthorizationHeader = () => {
@@ -58,13 +59,14 @@ function Detail() {
       '"';
     return { Authorization: Authorization, 'X-Date': GMTString };
   };
-  console.log('detail', detail);
-  console.log('detail.Picture', detail.Picture);
-  console.log('detail.Name', detail.Name);
+  // console.log('detailIsLoading', detailIsLoading);
+  // console.log('detail', detail);
+  // console.log('detail.Picture', detail.Picture);
+  // console.log('detail.Name', detail.Name);
 
   return (
     <>
-      {isLoading ? (
+      {detailIsLoading ? (
         <Spinner />
       ) : (
         <div>

@@ -185,7 +185,7 @@ function Home() {
                           </p>
 
                           <Link
-                            to={`f2e/detail/${hotAttractions.ID}`}
+                            to={`/f2e/detail/${hotAttractions.ID}`}
                             className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
                           >
                             <span className="absolute inset-0 bg-primary"></span>

@@ -26,11 +26,11 @@ function BackToTopButton() {
   return (
     <>
       <div
-        className="rounded-full h-10 w-10 items-center justify-center border-2 border-primary cursor-pointer fixed bottom-20 right-8 z-50 opacity-50 hover:opacity-100 hover:bg-primary scrollToTop-animate"
+        className="rounded-full h-10 w-10 items-center justify-center cursor-pointer fixed bottom-20 right-8 z-50 opacity-50 hover:opacity-100 bg-primary scrollToTop-animate"
         onClick={scrollToTop}
         style={{ display: showButton ? 'flex' : 'none' }}
       >
-        <BsArrowUpShort className="text-primary text-4xl hover:text-white" />
+        <BsArrowUpShort className="text-white text-4xl" />
       </div>
     </>
   );
