@@ -12,6 +12,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import BackToTopButton from './components/BackToTopButton';
 // pages
 import Home from './pages/Home';
 import Attractions from './pages/Attractions';
@@ -154,6 +155,7 @@ function App() {
                 </Route>
               </Switch>
             </ScrollToTop>
+            <BackToTopButton />
             <Footer />
           </>
         </Router>
