@@ -64,7 +64,7 @@ function Home() {
     // 1.5秒後關閉指示器
     setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1500);
   }, []);
 
   // API ID & KEY 加密
@@ -98,10 +98,10 @@ function Home() {
             <div className="max-w-2xl mx-auto py-lg px-xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="flex justify-between items-center">
                 <div className="flex flex-wrap items-center">
-                  <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
+                  <h2 className="text-3xl font-bold tracking-normal text-primary md:pr-md pr-sm">
                     熱門景點
                   </h2>
-                  <img src={hotfire} />
+                  <img className="md:h-8 h-6" src={hotfire} />
                 </div>
                 <div>
                   <Link
@@ -115,30 +115,31 @@ function Home() {
               </div>
               <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 hotSlider">
                 <Slider
-                  arrows={true}
-                  dots={true}
                   slidesToShow={3}
                   slidesToScroll={3}
                   infinite={true}
+                  dots={true}
                   // autoplay={true}
                   // autoplaySpeed={2000}
                   responsive={[
                     {
-                      breakpoint: 1024,
+                      breakpoint: 770,
                       settings: {
                         slidesToShow: 2,
                         slidesToScroll: 2,
                         infinite: true,
                         dots: true,
+                        arrows: true,
                       },
                     },
                     {
-                      breakpoint: 770,
+                      breakpoint: 375,
                       settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         infinite: true,
-                        dots: true,
+                        dots: false,
+                        arrows: true,
                       },
                     },
                   ]}
@@ -206,10 +207,10 @@ function Home() {
             <div className="max-w-2xl mx-auto py-lg px-xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="flex justify-between items-center">
                 <div className="flex flex-wrap items-center">
-                  <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
+                  <h2 className="text-3xl font-bold tracking-normal text-primary md:pr-md pr-sm">
                     熱門美食
                   </h2>
-                  <img src={hotfire} />
+                  <img className="md:h-8 h-6" src={hotfire} />
                 </div>
                 <div>
                   <Link
@@ -232,21 +233,23 @@ function Home() {
                   // autoplaySpeed={2000}
                   responsive={[
                     {
-                      breakpoint: 1024,
+                      breakpoint: 770,
                       settings: {
                         slidesToShow: 2,
                         slidesToScroll: 2,
                         infinite: true,
                         dots: true,
+                        arrows: true,
                       },
                     },
                     {
-                      breakpoint: 770,
+                      breakpoint: 375,
                       settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         infinite: true,
-                        dots: true,
+                        dots: false,
+                        arrows: true,
                       },
                     },
                   ]}
@@ -312,17 +315,17 @@ function Home() {
             <div className="max-w-2xl mx-auto py-lg px-xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="flex justify-between items-center">
                 <div className="flex flex-wrap items-center">
-                  <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
+                  <h2 className="text-3xl font-bold tracking-normal text-primary md:pr-md pr-sm">
                     熱門活動
                   </h2>
-                  <img src={hotfire} />
+                  <img className="md:h-8 h-6" src={hotfire} />
                 </div>
                 <div>
                   <Link
                     to="/f2e/activities"
                     className="flex flex-wrap items-center text-danger"
                   >
-                    <p>更多熱門活動</p>
+                    <p className="text-base">更多熱門活動</p>
                     <BiChevronRight />
                   </Link>
                 </div>
@@ -338,21 +341,23 @@ function Home() {
                   // autoplaySpeed={2000}
                   responsive={[
                     {
-                      breakpoint: 1024,
+                      breakpoint: 770,
                       settings: {
                         slidesToShow: 2,
                         slidesToScroll: 2,
                         infinite: true,
                         dots: true,
+                        arrows: true,
                       },
                     },
                     {
-                      breakpoint: 770,
+                      breakpoint: 375,
                       settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         infinite: true,
-                        dots: true,
+                        dots: false,
+                        arrows: true,
                       },
                     },
                   ]}

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../images/logo.png';
 import TaiFun from '../images/TaiFun.png';
-import { Link } from 'react-router-dom'; //Link標籤要變成link
+import { Link } from 'react-router-dom';
+import { useMyContext } from '../context/context';
 
 function Navbar(props) {
+  const { navBtnState, setNavBtnState } = useMyContext();
+
   return (
     <>
       <header>
@@ -16,10 +19,28 @@ function Navbar(props) {
             className="flex flex-wrap items-center
     justify-between"
           >
-            <Link to="/f2e">
+            <Link
+              to="/f2e"
+              onClick={() =>
+                setNavBtnState({
+                  attractionsLinkClass: 'navBtn ',
+                  activitiesLinkClass: 'navBtn',
+                  foodLinkClass: 'navBtn',
+                })
+              }
+            >
               <img src={logo} />
             </Link>
-            <Link to="/f2e">
+            <Link
+              to="/f2e"
+              onClick={() =>
+                setNavBtnState({
+                  attractionsLinkClass: 'navBtn ',
+                  activitiesLinkClass: 'navBtn',
+                  foodLinkClass: 'navBtn',
+                })
+              }
+            >
               <img src={TaiFun} />
             </Link>
           </div>
@@ -28,7 +49,15 @@ function Navbar(props) {
               <li>
                 <Link
                   to="/f2e/attractions"
-                  className="block md:pr-lg text-secondary hover:text-primary"
+                  // className="navBtn navBtn-active"
+                  className={navBtnState.attractionsLinkClass}
+                  onClick={() =>
+                    setNavBtnState({
+                      attractionsLinkClass: 'navBtn navBtn-active',
+                      activitiesLinkClass: 'navBtn',
+                      foodLinkClass: 'navBtn',
+                    })
+                  }
                 >
                   探索景點
                 </Link>
@@ -36,7 +65,14 @@ function Navbar(props) {
               <li>
                 <Link
                   to="/f2e/food"
-                  className="block md:pr-lg text-secondary hover:text-primary"
+                  className={navBtnState.foodLinkClass}
+                  onClick={() =>
+                    setNavBtnState({
+                      attractionsLinkClass: 'navBtn',
+                      activitiesLinkClass: 'navBtn',
+                      foodLinkClass: 'navBtn navBtn-active',
+                    })
+                  }
                 >
                   品嚐美食
                 </Link>
@@ -44,7 +80,14 @@ function Navbar(props) {
               <li>
                 <Link
                   to="/f2e/activities"
-                  className="block  text-secondary hover:text-primary"
+                  className={navBtnState.activitiesLinkClass}
+                  onClick={() =>
+                    setNavBtnState({
+                      attractionsLinkClass: 'navBtn ',
+                      activitiesLinkClass: 'navBtn navBtn-active',
+                      foodLinkClass: 'navBtn',
+                    })
+                  }
                 >
                   節慶活動
                 </Link>

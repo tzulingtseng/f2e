@@ -4,6 +4,21 @@ nav {
 .padding-top {
   padding-top: 72px;
 }
+.navBtn {
+  display: block;
+  padding-top: 8px;
+  margin-right: 1.5rem;
+  border-top: 2px solid transparent;
+  color: #646464;
+}
+.navBtn-active {
+  border-top: 2px solid #2f798c;
+  color: #2f798c;
+}
+.navBtn:hover {
+  border-top: 2px solid #2f798c;
+  color: #2f798c;
+}
 .banner-home {
   padding-top: 72px;
   height: 580px;
@@ -77,4 +92,8 @@ nav {
 .scrollToTop-animate {
   /* transition: opacity 0.4s, color ease-in-out 0.2s, background ease-in-out 0.2s; */
   /* animation: fadeIn 0.3s; */
+}
+.leaflet-container {
+  max-width: 80%;
+  height: 24rem;
 }

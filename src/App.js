@@ -39,6 +39,12 @@ function App() {
   // 載入指示的spinner動畫用的
   const [isLoading, setIsLoading] = useState(true);
 
+  const [navBtnState, setNavBtnState] = useState({
+    attractionsLinkClass: 'navBtn',
+    activitiesLinkClass: 'navBtn',
+    foodLinkClass: 'navBtn',
+  });
+
   // 如果 currentPage 沒有設定，那就預設第一頁
   // 偵測網址上的變化
   useEffect(() => {
@@ -87,6 +93,8 @@ function App() {
           setSearchCityClick,
           isLoading,
           setIsLoading,
+          navBtnState,
+          setNavBtnState,
         }}
       >
         <Router>

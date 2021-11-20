@@ -14,9 +14,9 @@ function Banner() {
           <div className="flex justify-center items-center">
             <div className="mr-2">
               <input
-                className="w-96 shadow appearance-none py-sm px-md text-secondary leading-tight"
+                className="md:w-96 w-40 shadow appearance-none py-sm px-md text-secondary leading-tight"
                 type="text"
-                placeholder="你想去哪裡？請輸入關鍵字"
+                placeholder="請輸入關鍵字搜尋"
               />
             </div>
             <div className="mr-2">

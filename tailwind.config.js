@@ -19,11 +19,12 @@ module.exports = {
       // => @media (min-width: 480px) { ... }
     },
     padding: {
+      0: '0px',
       1.5: '6px',
-      sm: '8px',
-      md: '16px',
-      lg: '24px',
-      xl: '48px',
+      sm: '0.5rem',
+      md: '1rem',
+      lg: '1.5rem',
+      xl: '3rem',
     },
     backgroundColor: (theme) => ({
       primary: '#2F798C',

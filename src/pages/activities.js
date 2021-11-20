@@ -31,11 +31,18 @@ function Activities() {
     setSearchCityClick,
     isLoading,
     setIsLoading,
+    setNavBtnState,
   } = useMyContext();
 
   useEffect(() => {
     // 先開起載入指示器
     setIsLoading(true);
+
+    setNavBtnState({
+      attractionsLinkClass: 'navBtn',
+      activitiesLinkClass: 'navBtn navBtn-active',
+      foodLinkClass: 'navBtn ',
+    });
 
     const getAllAttractionsData = async () => {
       try {
@@ -108,15 +115,15 @@ function Activities() {
           </div>
           <div className="container mx-auto" ref={myRef}>
             <div className="max-w-2xl mx-auto py-lg px-xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-              <div className="flex justify-between items-center">
-                <div className="flex flex-wrap items-center">
+              <div className="md:flex md:justify-between md:items-end">
+                <div className="flex flex-wrap items-center justify-center">
                   <h2 className="text-3xl font-bold tracking-normal text-primary pr-md">
                     搜尋結果
                   </h2>
-                  <img src={hotfire} />
+                  <img className="h-8" src={hotfire} />
                 </div>
 
-                <p>
+                <p className="md:block hidden">
                   關鍵字：
                   <span className="text-primary">
                     {searchWordClick === '' ? '無' : searchWordClick}
@@ -129,8 +136,23 @@ function Activities() {
                   <span className="text-primary">{displayPosts.length}</span>{' '}
                   筆資料
                 </p>
+                <p className="md:hidden block text-center mt-4 leading-7">
+                  關鍵字：
+                  <span className="text-primary">
+                    {searchWordClick === '' ? '無' : searchWordClick}
+                  </span>{' '}
+                  ，地區：
+                  <span className="text-primary">
+                    {searchCityClick === '' ? '無' : searchCityClick}
+                  </span>{' '}
+                  ，
+                </p>
+                <p className="md:hidden block text-center leading-7">
+                  共 <span className="text-primary">{displayPosts.length}</span>{' '}
+                  筆資料
+                </p>
               </div>
-              <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8">
+              <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8 gap-6">
                 {currentPosts.map((item, i) => (
                   <div className="group shadow-md rounded-xl" key={item.ID}>
                     {JSON.stringify(item.Picture) === '{}' ||
