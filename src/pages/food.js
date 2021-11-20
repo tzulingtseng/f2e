@@ -46,7 +46,7 @@ function Food() {
             headers: getAuthorizationHeader(),
           }
         );
-        console.log('postsRes', postsRes);
+        // console.log('postsRes', postsRes);
         setPosts(postsRes.data);
         setDisplayPosts(postsRes.data);
       } catch (e) {
@@ -57,7 +57,7 @@ function Food() {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 500);
   }, []);
 
   let history = useHistory();

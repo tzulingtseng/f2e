@@ -5,13 +5,16 @@ import jsSHA from 'jssha';
 import museum from '../images/museum.png';
 import map from '../images/map.png';
 import { useMyContext } from '../context/context';
-// 引入components
+// 引入 components
 import Spinner from '../components/Spinner';
+// 引入 icons
+import { AiOutlinePicture } from 'react-icons/ai';
 
 function Detail() {
   const { id } = useParams();
   const { detail, setDetail } = useMyContext();
   const [detailIsLoading, setDetailIsLoading] = useState(true);
+  // console.log('id', id.substring(0, 2));
 
   useEffect(() => {
     // 先開起載入指示器
@@ -26,18 +29,61 @@ function Detail() {
           }
         );
         setDetail(detailRes.data[0]);
-        console.log('detailRes.data[0]', detailRes.data[0]);
+        // console.log('detailRes.data[0]', detailRes.data[0]);
       } catch (e) {
         console.log(e);
       }
     };
-    // console.log('detail[0]', detail[0].Name);
-    getAllAttractionsData();
+    // getAllAttractionsData();
+
+    const getAllFoodData = async () => {
+      try {
+        const detailRes = await axios.get(
+          `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$filter=contains(ID,%27${id}%27)&$format=JSON`,
+          {
+            headers: getAuthorizationHeader(),
+          }
+        );
+        setDetail(detailRes.data[0]);
+        // console.log('detailRes.data[0]', detailRes.data[0]);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    // getAllFoodData();
+
+    const getAllActivitiesData = async () => {
+      try {
+        const detailRes = await axios.get(
+          `https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$filter=contains(ID,%27${id}%27)&$format=JSON`,
+          {
+            headers: getAuthorizationHeader(),
+          }
+        );
+        setDetail(detailRes.data[0]);
+        // console.log('detailRes.data[0]', detailRes.data[0]);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    // getAllActivitiesData();
+
+    switch (id.substring(0, 2)) {
+      case 'C1':
+        getAllAttractionsData();
+        break;
+      case 'C2':
+        getAllActivitiesData();
+        break;
+      case 'C3':
+        getAllFoodData();
+        break;
+    }
 
     // 1.5秒後關閉指示器
     setTimeout(() => {
       setDetailIsLoading(false);
-    }, 1500);
+    }, 500);
   }, []);
 
   // API ID & KEY 加密
@@ -71,19 +117,40 @@ function Detail() {
       ) : (
         <div>
           <div className="container mx-auto padding-top">
-            <div className="grid grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 py-lg">
-              <div>
-                <img src={detail.Picture.PictureUrl1} />
-              </div>
-              <div className="p-md">
+            <div className="grid grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 pt-lg pb-md">
+              {JSON.stringify(detail.Picture) === '{}' ||
+              !detail.Picture.hasOwnProperty('PictureUrl1') ? (
+                <div className="w-full h-96 bg-secondary  rounded-xl shadow-xl overflow-hidden flex justify-center items-center">
+                  <div className="text-secondary">
+                    <AiOutlinePicture className="text-7xl mx-auto" />
+                    <p>此景點未提供照片</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="w-full h-96 bg-secondary  rounded-xl shadow-xl overflow-hidden">
+                  <img
+                    src={detail.Picture.PictureUrl1}
+                    className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
+                  />
+                </div>
+              )}
+              <div className="p-md ml-4">
                 <h2 className="text-3xl font-bold pb-md">{detail.Name}</h2>
                 <h2 className="text-2xl font-bold pb-md">資訊</h2>
                 <h3 className="text-lg font-semibold pb-sm">電話：</h3>
                 <p className="pb-sm">{detail.Phone}</p>
                 <h3 className="text-lg font-semibold pb-sm">地址：</h3>
-                <p className="pb-sm">{detail.Address}</p>
+                <p className="pb-sm">
+                  {detail.hasOwnProperty('Address')
+                    ? detail.Address
+                    : '詳見官網'}
+                </p>
                 <h3 className="text-lg font-semibold pb-sm">開放時間：</h3>
-                <p>{detail.OpenTime}</p>
+                <p>
+                  {detail.hasOwnProperty('OpenTime')
+                    ? detail.OpenTime
+                    : detail.StartTime.substring(0, 10)}
+                </p>
               </div>
             </div>
           </div>

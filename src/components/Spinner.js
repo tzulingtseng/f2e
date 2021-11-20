@@ -6,7 +6,7 @@ function Spinner() {
     <>
       <div className="h-screen flex justify-center items-center">
         <ReactLoading
-          type={'bars'}
+          type={'spokes'}
           color={'#2F798C'}
           height={'4%'}
           width={'4%'}

@@ -5,12 +5,12 @@ import axios from 'axios';
 import jsSHA from 'jssha';
 import Slider from 'react-slick';
 
-// 引入icon
+// 引入 icons
 import { AiOutlinePicture } from 'react-icons/ai';
 import hotfire from '../images/hotfire.svg';
 import location from '../images/location.png';
 import { BiChevronRight } from 'react-icons/bi';
-// 引入components
+// 引入 components
 import BannerHome from '../components/BannerHome';
 import Spinner from '../components/Spinner';
 
@@ -64,7 +64,7 @@ function Home() {
     // 1.5秒後關閉指示器
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 500);
   }, []);
 
   // API ID & KEY 加密
@@ -291,7 +291,7 @@ function Home() {
                           </p>
 
                           <Link
-                            to="/"
+                            to={`/f2e/detail/${hotFood.ID}`}
                             className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
                           >
                             <span className="absolute inset-0 bg-primary"></span>
@@ -395,7 +395,7 @@ function Home() {
                           </p>
 
                           <Link
-                            to="/"
+                            to={`/f2e/detail/${hotActivities.ID}`}
                             className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
                           >
                             <span className="absolute inset-0 bg-primary"></span>

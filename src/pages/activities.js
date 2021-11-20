@@ -45,7 +45,7 @@ function Activities() {
             headers: getAuthorizationHeader(),
           }
         );
-        console.log('postsRes', postsRes);
+        // console.log('postsRes', postsRes);
         setPosts(postsRes.data);
         setDisplayPosts(postsRes.data);
       } catch (e) {
@@ -54,10 +54,10 @@ function Activities() {
     };
     getAllAttractionsData();
 
-    // 1.5秒後關閉指示器
+    // 0.5秒後關閉指示器
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 500);
   }, []);
 
   let history = useHistory();
@@ -88,7 +88,7 @@ function Activities() {
       '"';
     return { Authorization: Authorization, 'X-Date': GMTString };
   };
-  console.log('currentPosts', currentPosts);
+  // console.log('currentPosts', currentPosts);
 
   return (
     <>
