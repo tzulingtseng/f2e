@@ -39,6 +39,8 @@ function Activities() {
     setIsLoading(true);
 
     setNavBtnState({
+      menu: 'hamburger',
+      navWrapper: 'nav-wrapper',
       attractionsLinkClass: 'navBtn',
       activitiesLinkClass: 'navBtn navBtn-active',
       foodLinkClass: 'navBtn ',

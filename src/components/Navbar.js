@@ -7,13 +7,20 @@ import { useMyContext } from '../context/context';
 function Navbar(props) {
   const { navBtnState, setNavBtnState } = useMyContext();
 
+  // const toggleMenu = () => {
+  //   setNavBtnState({
+  //     ...navBtnState,
+  //     menu: !navBtnState.menu,
+  //   });
+  // };
+
   return (
     <>
       <header>
         <nav
           className="fixed flex flex-wrap items-center
     justify-between w-full
-    py-0 px-lg text-gray-600 bg-white z-50"
+    py-0 px-lg text-gray-600 bg-white z-50 shadow-lg"
         >
           <div
             className="flex flex-wrap items-center
@@ -23,9 +30,11 @@ function Navbar(props) {
               to="/f2e"
               onClick={() =>
                 setNavBtnState({
-                  attractionsLinkClass: 'navBtn ',
-                  activitiesLinkClass: 'navBtn',
-                  foodLinkClass: 'navBtn',
+                  menu: 'hamburger',
+                  navWrapper: 'nav-wrapper',
+                  attractionsLinkClass: 'navBtn',
+                  activitiesLinkClass: 'navBtn ',
+                  foodLinkClass: 'navBtn ',
                 })
               }
             >
@@ -35,17 +44,39 @@ function Navbar(props) {
               to="/f2e"
               onClick={() =>
                 setNavBtnState({
-                  attractionsLinkClass: 'navBtn ',
-                  activitiesLinkClass: 'navBtn',
-                  foodLinkClass: 'navBtn',
+                  menu: 'hamburger',
+                  navWrapper: 'nav-wrapper',
+                  attractionsLinkClass: 'navBtn',
+                  activitiesLinkClass: 'navBtn ',
+                  foodLinkClass: 'navBtn ',
                 })
               }
             >
               <img src={TaiFun} />
             </Link>
           </div>
-          <div>
-            <ul className="md:flex">
+          <div
+            class={navBtnState.menu}
+            onClick={() => {
+              {
+                navBtnState.menu === 'hamburger'
+                  ? setNavBtnState({
+                      menu: 'hamburger active',
+                      navWrapper: 'nav-wrapper active',
+                    })
+                  : setNavBtnState({
+                      menu: 'hamburger',
+                      navWrapper: 'nav-wrapper',
+                    });
+              }
+            }}
+          >
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <div class={navBtnState.navWrapper}>
+            <ul className="flex">
               <li>
                 <Link
                   to="/f2e/attractions"
@@ -53,6 +84,8 @@ function Navbar(props) {
                   className={navBtnState.attractionsLinkClass}
                   onClick={() =>
                     setNavBtnState({
+                      menu: 'hamburger',
+                      navWrapper: 'nav-wrapper',
                       attractionsLinkClass: 'navBtn navBtn-active',
                       activitiesLinkClass: 'navBtn',
                       foodLinkClass: 'navBtn',
@@ -68,6 +101,8 @@ function Navbar(props) {
                   className={navBtnState.foodLinkClass}
                   onClick={() =>
                     setNavBtnState({
+                      menu: 'hamburger',
+                      navWrapper: 'nav-wrapper',
                       attractionsLinkClass: 'navBtn',
                       activitiesLinkClass: 'navBtn',
                       foodLinkClass: 'navBtn navBtn-active',
@@ -83,6 +118,8 @@ function Navbar(props) {
                   className={navBtnState.activitiesLinkClass}
                   onClick={() =>
                     setNavBtnState({
+                      menu: 'hamburger',
+                      navWrapper: 'nav-wrapper',
                       attractionsLinkClass: 'navBtn ',
                       activitiesLinkClass: 'navBtn navBtn-active',
                       foodLinkClass: 'navBtn',

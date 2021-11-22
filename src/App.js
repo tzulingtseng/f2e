@@ -40,14 +40,24 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [navBtnState, setNavBtnState] = useState({
+    menu: 'hamburger',
     attractionsLinkClass: 'navBtn',
     activitiesLinkClass: 'navBtn',
     foodLinkClass: 'navBtn',
   });
+  console.log('navBtnState', navBtnState);
 
   // 如果 currentPage 沒有設定，那就預設第一頁
   // 偵測網址上的變化
   useEffect(() => {
+    setNavBtnState({
+      menu: 'hamburger',
+      navWrapper: 'nav-wrapper',
+      attractionsLinkClass: 'navBtn',
+      activitiesLinkClass: 'navBtn ',
+      foodLinkClass: 'navBtn ',
+    });
+
     setCurrentPage(parseInt(currentPage, 10) || 1);
   }, [currentPage]);
 

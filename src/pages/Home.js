@@ -6,12 +6,12 @@ import jsSHA from 'jssha';
 import Slider from 'react-slick';
 
 // 引入 icons
+import { BiSearch } from 'react-icons/bi';
 import { AiOutlinePicture } from 'react-icons/ai';
 import hotfire from '../images/hotfire.svg';
 import location from '../images/location.png';
 import { BiChevronRight } from 'react-icons/bi';
 // 引入 components
-import BannerHome from '../components/BannerHome';
 import Spinner from '../components/Spinner';
 
 function Home() {
@@ -93,7 +93,39 @@ function Home() {
         <Spinner />
       ) : (
         <div>
-          <BannerHome />
+          <div className="banner-home flex justify-center items-center">
+            <div className="banner-mask"></div>
+            <div className="container relative text-center">
+              <h1 className="text-5xl font-bold text-white mb-4">
+                探索臺灣之美
+              </h1>
+              <h1 className="text-5xl font-bold text-white mb-4">
+                讓我們更親近這片土地
+              </h1>
+              <h2 className="text-2xl font-bold text-white mb-4">
+                景點、 美食、 活動
+              </h2>
+              {/* <div className="flex justify-center items-center">
+                <div className="mr-2">
+                  <input
+                    className="md:w-96 w-40 shadow appearance-none py-sm px-md text-secondary leading-tight"
+                    type="text"
+                    placeholder="請輸入關鍵字搜尋"
+                  />
+                </div>
+                <div className="mr-2">
+                  <select className="shadow appearance-none py-1.5 px-md text-secondary ">
+                    <option>景點</option>
+                    <option>美食</option>
+                    <option>活動</option>
+                  </select>
+                </div>
+                <div className=" w-9 h-9 bg-primary rounded-md cursor-pointer">
+                  <BiSearch className="text-white leading-9 text-4xl" />
+                </div>
+              </div> */}
+            </div>
+          </div>
           <div className="container mx-auto">
             <div className="max-w-2xl mx-auto py-lg px-xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="flex justify-between items-center">

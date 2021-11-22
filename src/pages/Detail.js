@@ -72,6 +72,8 @@ function Detail() {
     switch (id.substring(0, 2)) {
       case 'C1':
         setNavBtnState({
+          menu: 'hamburger',
+          navWrapper: 'nav-wrapper',
           attractionsLinkClass: 'navBtn navBtn-active',
           activitiesLinkClass: 'navBtn',
           foodLinkClass: 'navBtn',
@@ -80,6 +82,8 @@ function Detail() {
         break;
       case 'C2':
         setNavBtnState({
+          menu: 'hamburger',
+          navWrapper: 'nav-wrapper',
           attractionsLinkClass: 'navBtn ',
           activitiesLinkClass: 'navBtn navBtn-active',
           foodLinkClass: 'navBtn',
@@ -88,6 +92,8 @@ function Detail() {
         break;
       case 'C3':
         setNavBtnState({
+          menu: 'hamburger',
+          navWrapper: 'nav-wrapper',
           attractionsLinkClass: 'navBtn',
           activitiesLinkClass: 'navBtn',
           foodLinkClass: 'navBtn navBtn-active',
@@ -132,7 +138,7 @@ function Detail() {
         <Spinner />
       ) : (
         <div>
-          <div className="container mx-auto padding-top">
+          <div className="container mx-auto pt-72">
             <div className="grid grid-cols-1 xl:grid-cols-2 m-6">
               {JSON.stringify(detail.Picture) === '{}' ||
               !detail.Picture.hasOwnProperty('PictureUrl1') ? (
