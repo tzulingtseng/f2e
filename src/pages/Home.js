@@ -97,15 +97,15 @@ function Home() {
           <div className="banner-home flex justify-center items-center">
             <div className="banner-mask"></div>
             <div className="container relative text-center">
-              <Typing speed={100}>
+              <Typing speed={200}>
                 <h1 className="lg:text-5xl text-4xl font-bold text-white mb-4">
                   探索臺灣之美
                 </h1>
-                <Typing.Speed ms={100} />
+                <Typing.Speed ms={200} />
                 <h1 className="lg:text-5xl text-4xl font-bold text-white mb-4">
                   讓我們更親近這片土地
                 </h1>
-                <Typing.Speed ms={100} />
+                <Typing.Speed ms={200} />
                 <h2 className="text-2xl font-bold text-white mb-4">
                   景點、 美食、 活動
                 </h2>
