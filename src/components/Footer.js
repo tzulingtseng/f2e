@@ -5,7 +5,7 @@ function Footer() {
     <>
       <div className="bg-primary text-center">
         <div className="py-md text-white">
-          #The F2E 3rd Week01 UI_#Breakfast | FE_#Diuer
+          #The F2E 3rd Taiwan tourist attractions
         </div>
       </div>
     </>

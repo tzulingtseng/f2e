@@ -4,6 +4,7 @@ import { useMyContext } from '../context/context';
 import axios from 'axios';
 import jsSHA from 'jssha';
 import Slider from 'react-slick';
+import Typing from 'react-typing-animation';
 
 // 引入 icons
 import { BiSearch } from 'react-icons/bi';
@@ -96,7 +97,20 @@ function Home() {
           <div className="banner-home flex justify-center items-center">
             <div className="banner-mask"></div>
             <div className="container relative text-center">
-              <h1 className="text-5xl font-bold text-white mb-4">
+              <Typing speed={50}>
+                <h1 className="text-5xl font-bold text-white mb-4">
+                  探索臺灣之美
+                </h1>
+                <Typing.Speed ms={50} />
+                <h1 className="text-5xl font-bold text-white mb-4">
+                  讓我們更親近這片土地
+                </h1>
+                <Typing.Speed ms={50} />
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  景點、 美食、 活動
+                </h2>
+              </Typing>
+              {/* <h1 className="text-5xl font-bold text-white mb-4">
                 探索臺灣之美
               </h1>
               <h1 className="text-5xl font-bold text-white mb-4">
@@ -104,7 +118,7 @@ function Home() {
               </h1>
               <h2 className="text-2xl font-bold text-white mb-4">
                 景點、 美食、 活動
-              </h2>
+              </h2> */}
               {/* <div className="flex justify-center items-center">
                 <div className="mr-2">
                   <input
@@ -151,8 +165,8 @@ function Home() {
                   slidesToScroll={3}
                   infinite={true}
                   dots={true}
-                  // autoplay={true}
-                  // autoplaySpeed={2000}
+                  autoplay={true}
+                  autoplaySpeed={2000}
                   responsive={[
                     {
                       breakpoint: 770,
@@ -261,8 +275,8 @@ function Home() {
                   slidesToShow={3}
                   slidesToScroll={3}
                   infinite={true}
-                  // autoplay={true}
-                  // autoplaySpeed={2000}
+                  autoplay={true}
+                  autoplaySpeed={2000}
                   responsive={[
                     {
                       breakpoint: 770,
@@ -369,8 +383,8 @@ function Home() {
                   slidesToShow={3}
                   slidesToScroll={3}
                   infinite={true}
-                  // autoplay={true}
-                  // autoplaySpeed={2000}
+                  autoplay={true}
+                  autoplaySpeed={2000}
                   responsive={[
                     {
                       breakpoint: 770,
