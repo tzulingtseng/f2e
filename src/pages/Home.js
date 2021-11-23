@@ -166,7 +166,7 @@ function Home() {
                   infinite={true}
                   dots={true}
                   autoplay={true}
-                  autoplaySpeed={2000}
+                  autoplaySpeed={4000}
                   responsive={[
                     {
                       breakpoint: 770,
@@ -276,7 +276,7 @@ function Home() {
                   slidesToScroll={3}
                   infinite={true}
                   autoplay={true}
-                  autoplaySpeed={2000}
+                  autoplaySpeed={4000}
                   responsive={[
                     {
                       breakpoint: 770,
@@ -384,7 +384,7 @@ function Home() {
                   slidesToScroll={3}
                   infinite={true}
                   autoplay={true}
-                  autoplaySpeed={2000}
+                  autoplaySpeed={4000}
                   responsive={[
                     {
                       breakpoint: 770,
