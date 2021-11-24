@@ -159,7 +159,7 @@ function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 hotSlider">
+              <div className="mt-6 grid grid-cols-1 gap-6 hotSlider">
                 <Slider
                   slidesToShow={3}
                   slidesToScroll={3}
@@ -268,7 +268,7 @@ function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 hotSlider">
+              <div className="mt-6 grid grid-cols-1 gap-6 hotSlider">
                 <Slider
                   arrows={true}
                   dots={true}
@@ -376,7 +376,7 @@ function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 hotSlider">
+              <div className="mt-6 grid grid-cols-1 gap-6 hotSlider">
                 <Slider
                   arrows={true}
                   dots={true}

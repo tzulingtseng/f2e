@@ -142,21 +142,21 @@ function Detail() {
             <div className="grid grid-cols-1 xl:grid-cols-2 m-6">
               {JSON.stringify(detail.Picture) === '{}' ||
               !detail.Picture.hasOwnProperty('PictureUrl1') ? (
-                <div className="w-full h-96 bg-secondary rounded-xl shadow-xl overflow-hidden flex justify-center items-center">
+                <div className="w-full h-96 bg-secondary rounded-xl shadow-xl overflow-hidden flex justify-center items-center xl:mb-0 mb-4">
                   <div className="text-secondary">
                     <AiOutlinePicture className="text-7xl mx-auto" />
                     <p>此景點未提供照片</p>
                   </div>
                 </div>
               ) : (
-                <div className="w-full h-96 bg-secondary  rounded-xl shadow-xl overflow-hidden">
+                <div className="w-full h-96 bg-secondary  rounded-xl shadow-xl overflow-hidden xl:mb-0 mb-4">
                   <img
                     src={detail.Picture.PictureUrl1}
                     className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
                   />
                 </div>
               )}
-              <div className="xl:p-md md:py-md xl:ml-4 md:mt-2">
+              <div className="xl:p-md md:py-md xl:ml-4">
                 <h2 className="text-3xl font-bold pb-md">{detail.Name}</h2>
                 <h2 className="text-2xl font-bold pb-md">資訊</h2>
                 <h3 className="text-lg font-semibold pb-sm">電話：</h3>

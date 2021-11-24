@@ -154,7 +154,7 @@ function Attractions() {
                   筆資料
                 </p>
               </div>
-              <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8">
+              <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {currentPosts.map((item, i) => (
                   <div className="group shadow-md rounded-xl" key={item.ID}>
                     {JSON.stringify(item.Picture) === '{}' ||
