@@ -97,7 +97,7 @@ function Home() {
           <div className="banner-home flex justify-center items-center">
             <div className="banner-mask"></div>
             <div className="container relative text-center">
-              <Typing speed={200}>
+              <Typing startDelay={500} speed={200}>
                 <h1 className="lg:text-5xl text-4xl font-bold text-white mb-4">
                   探索臺灣之美
                 </h1>
