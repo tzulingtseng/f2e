@@ -32,11 +32,13 @@ function Activities() {
     isLoading,
     setIsLoading,
     setNavBtnState,
+    setCurrentPage,
   } = useMyContext();
 
   useEffect(() => {
     // 先開起載入指示器
     setIsLoading(true);
+    setCurrentPage(1);
 
     setNavBtnState({
       menu: 'hamburger',
@@ -49,7 +51,7 @@ function Activities() {
     const getAllAttractionsData = async () => {
       try {
         const postsRes = await axios.get(
-          'https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$top=150&$format=JSON',
+          'https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$format=JSON',
           {
             headers: getAuthorizationHeader(),
           }

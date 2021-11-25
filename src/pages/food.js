@@ -33,11 +33,14 @@ function Food() {
     isLoading,
     setIsLoading,
     setNavBtnState,
+    setCurrentPage,
+    navBtnState,
   } = useMyContext();
 
   useEffect(() => {
     // 先開起載入指示器
     setIsLoading(true);
+    setCurrentPage(1);
 
     setNavBtnState({
       menu: 'hamburger',
@@ -50,7 +53,7 @@ function Food() {
     const getAllAttractionsData = async () => {
       try {
         const postsRes = await axios.get(
-          'https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=150&$format=JSON',
+          'https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$format=JSON',
           {
             headers: getAuthorizationHeader(),
           }
@@ -67,12 +70,24 @@ function Food() {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
+    console.log('NavBtnState1', navBtnState);
   }, []);
 
   let history = useHistory();
   useEffect(() => {
     history.push(`/f2e/food/${currentPage}`);
+    // if (currentPage !== 0) {
+    //   console.log('789');
+    //   setNavBtnState({
+    //     menu: 'hamburger',
+    //     navWrapper: 'nav-wrapper',
+    //     attractionsLinkClass: 'navBtn ',
+    //     activitiesLinkClass: 'navBtn ',
+    //     foodLinkClass: 'navBtn navBtn-active',
+    //   });
+    // }
   }, [currentPage]);
+  console.log('NavBtnState2', navBtnState);
 
   const indexOfLastPost = currentPage * postsPerPage; // 20 = 2*10
   const indexOfFirstPost = indexOfLastPost - postsPerPage; // 10 = 20-10

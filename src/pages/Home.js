@@ -97,7 +97,7 @@ function Home() {
           <div className="banner-home flex justify-center items-center">
             <div className="banner-mask"></div>
             <div className="container relative text-center">
-              <Typing startDelay={700} speed={200}>
+              {/* <Typing startDelay={700} speed={200}>
                 <h1 className="lg:text-5xl text-4xl font-bold text-white mb-4">
                   探索臺灣之美
                 </h1>
@@ -109,8 +109,8 @@ function Home() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   景點、 美食、 活動
                 </h2>
-              </Typing>
-              {/* <h1 className="text-5xl font-bold text-white mb-4">
+              </Typing> */}
+              <h1 className="text-5xl font-bold text-white mb-4">
                 探索臺灣之美
               </h1>
               <h1 className="text-5xl font-bold text-white mb-4">
@@ -118,7 +118,7 @@ function Home() {
               </h1>
               <h2 className="text-2xl font-bold text-white mb-4">
                 景點、 美食、 活動
-              </h2> */}
+              </h2>
               {/* <div className="flex justify-center items-center">
                 <div className="mr-2">
                   <input

@@ -58,7 +58,7 @@ function Banner() {
         <div className="flex justify-center items-center">
           <div className="mr-2">
             <input
-              className="md:w-96 w-40 shadow appearance-none py-sm px-md text-secondary leading-tight"
+              className="md:w-96 w-40 shadow appearance-none py-sm px-md text-secondary leading-tight bg-white"
               type="text"
               placeholder="請輸入關鍵字搜尋"
               value={searchWord}
@@ -69,7 +69,7 @@ function Banner() {
           </div>
           <div className="mr-2">
             <select
-              className="shadow appearance-none py-1.5 px-md text-secondary "
+              className="shadow appearance-none py-1.5 px-md text-secondary bg-white"
               value={searchCity}
               onChange={(e) => setSearchCity(e.target.value)}
             >

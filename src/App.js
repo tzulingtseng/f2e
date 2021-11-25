@@ -26,6 +26,8 @@ function App() {
   // 頁碼分組，顯示7個頁碼，其餘用省略號顯示
   const [startPage, setStartPage] = useState(1);
   // 分頁開始頁碼
+  const totalPosts = displayPosts.length;
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   const [searchWord, setSearchWord] = useState('');
   const [searchWordClick, setSearchWordClick] = useState('');
@@ -45,10 +47,34 @@ function App() {
     activitiesLinkClass: 'navBtn',
     foodLinkClass: 'navBtn',
   });
-  console.log('navBtnState', navBtnState);
+  // console.log('navBtnState', navBtnState);
 
-  // 如果 currentPage 沒有設定，那就預設第一頁
-  // 偵測網址上的變化
+  const paginate = (pageNumber) => {
+    console.log('pageNumber', pageNumber);
+
+    // console.log('123');
+    // console.log('currentPage', currentPage);
+    // console.log('groupCount', groupCount);
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+    setCurrentPage(pageNumber);
+
+    if (pageNumber >= groupCount) {
+      setStartPage(pageNumber - 2);
+    }
+    if (pageNumber < groupCount) {
+      setStartPage(1);
+    }
+    if (pageNumber === 1) {
+      setStartPage(1);
+    }
+    // console.log('paginate currentPage', currentPage);
+  };
+
   useEffect(() => {
     setNavBtnState({
       menu: 'hamburger',
@@ -57,23 +83,10 @@ function App() {
       activitiesLinkClass: 'navBtn ',
       foodLinkClass: 'navBtn ',
     });
-
-    setCurrentPage(parseInt(currentPage, 10) || 1);
+    // 如果 currentPage 沒有設定，那就預設第一頁
+    // 偵測網址上的變化
+    // setCurrentPage(parseInt(currentPage, 10) || 1);
   }, [currentPage]);
-
-  const paginate = (pageNumber) => {
-    // if (currentPage >= groupCount) {
-    //   console.log('123');
-    //   setStartPage(currentPage - 2);
-    // }
-    // if (currentPage < groupCount) {
-    //   setStartPage(1);
-    // }
-    // if (currentPage === 1) {
-    //   setStartPage(1);
-    // }
-    setCurrentPage(pageNumber);
-  };
 
   return (
     <>
@@ -105,6 +118,8 @@ function App() {
           setIsLoading,
           navBtnState,
           setNavBtnState,
+          totalPosts,
+          totalPages,
         }}
       >
         <Router>
