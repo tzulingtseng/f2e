@@ -70,14 +70,14 @@ function Food() {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
-    console.log('NavBtnState1', navBtnState);
   }, []);
+  console.log('NavBtnState1', navBtnState);
 
   let history = useHistory();
   useEffect(() => {
     history.push(`/f2e/food/${currentPage}`);
-    // if (currentPage !== 0) {
-    //   console.log('789');
+    // console.log('history', history.location.pathname.indexOf('/f2e/food/'));
+    // if (history.location.pathname.indexOf('/f2e/food/') === 0) {
     //   setNavBtnState({
     //     menu: 'hamburger',
     //     navWrapper: 'nav-wrapper',

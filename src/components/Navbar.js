@@ -6,7 +6,6 @@ import { useMyContext } from '../context/context';
 
 function Navbar(props) {
   const { navBtnState, setNavBtnState } = useMyContext();
-
   // const toggleMenu = () => {
   //   setNavBtnState({
   //     ...navBtnState,
@@ -79,7 +78,7 @@ function Navbar(props) {
             <ul className="flex">
               <li>
                 <Link
-                  to="/f2e/attractions"
+                  to="/f2e/attractions/1"
                   // className="navBtn navBtn-active"
                   className={navBtnState.attractionsLinkClass}
                   onClick={() =>
@@ -97,7 +96,7 @@ function Navbar(props) {
               </li>
               <li>
                 <Link
-                  to="/f2e/food"
+                  to="/f2e/food/1"
                   className={navBtnState.foodLinkClass}
                   onClick={() =>
                     setNavBtnState({
@@ -114,7 +113,7 @@ function Navbar(props) {
               </li>
               <li>
                 <Link
-                  to="/f2e/activities"
+                  to="/f2e/activities/1"
                   className={navBtnState.activitiesLinkClass}
                   onClick={() =>
                     setNavBtnState({
