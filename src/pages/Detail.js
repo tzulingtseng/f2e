@@ -128,7 +128,7 @@ function Detail() {
     return { Authorization: Authorization, 'X-Date': GMTString };
   };
   // console.log('detailIsLoading', detailIsLoading);
-  console.log('detail', detail);
+  // console.log('detail', detail);
   // console.log('detail.Picture', detail.Picture);
   // console.log('detail.Name', detail.Name);
 

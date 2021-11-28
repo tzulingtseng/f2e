@@ -101,7 +101,7 @@ function Activities() {
       '"';
     return { Authorization: Authorization, 'X-Date': GMTString };
   };
-  console.log('currentPosts', currentPosts);
+  // console.log('currentPosts', currentPosts);
 
   return (
     <>

@@ -73,7 +73,7 @@ function Food() {
       setIsLoading(false);
     }, 1500);
   }, []);
-  console.log('NavBtnState1', navBtnState);
+  // console.log('NavBtnState1', navBtnState);
 
   let history = useHistory();
   useEffect(() => {
@@ -89,7 +89,7 @@ function Food() {
     //   });
     // }
   }, [currentPage]);
-  console.log('NavBtnState2', navBtnState);
+  // console.log('NavBtnState2', navBtnState);
 
   const indexOfLastPost = currentPage * postsPerPage; // 20 = 2*10
   const indexOfFirstPost = indexOfLastPost - postsPerPage; // 10 = 20-10
