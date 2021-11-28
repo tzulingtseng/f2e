@@ -15,7 +15,24 @@ function Banner() {
     setSearchWordClick,
     searchCityClick,
     setSearchCityClick,
+    setCurrentPage,
   } = useMyContext();
+
+  useEffect(() => {
+    setSearchWordClick('');
+    setSearchCityClick('');
+  }, []);
+  // console.log('posts', posts);
+  // posts.some(function(item,index,array){
+  //     return item.hasOwnProperty('Address')
+  // })
+  // console.log(
+  //   'result',
+  //   // posts.every(function (item, index, array) {
+  //   //   return item.hasOwnProperty('Address');
+  //   // })
+  //   posts.every((item) => item.hasOwnProperty('Address'))
+  // );
 
   const handleSearch = (posts, searchWord) => {
     let newPosts = [];
@@ -32,7 +49,13 @@ function Banner() {
   const handleSelect = (posts, searchCity) => {
     let newPosts = [...posts];
     if (searchCity) {
-      newPosts = [...newPosts].filter((item) => {
+      let newFilterPosts = [...newPosts].filter((item) => {
+        // console.log('item', item);
+        return item.hasOwnProperty('Address');
+      });
+
+      newPosts = newFilterPosts.filter((item) => {
+        // console.log('item', item);
         return item.Address.includes(searchCity);
       });
     }
@@ -50,6 +73,7 @@ function Banner() {
     setSearchCity('');
     setSearchWordClick(searchWord);
     setSearchCityClick(searchCity);
+    setCurrentPage(1);
   };
 
   return (

@@ -228,7 +228,9 @@ function Home() {
                           <p className="text-sm text-gray-500 pb-sm short-words h-7 leading-7">
                             {hotAttractions.hasOwnProperty('OpenTime')
                               ? hotAttractions.OpenTime
-                              : hotAttractions.StartTime.substring(0, 10)}
+                              : hotAttractions.hasOwnProperty('OpenTime')
+                              ? hotAttractions.StartTime.substring(0, 10)
+                              : '詳見官網'}
                           </p>
 
                           <Link
@@ -336,7 +338,9 @@ function Home() {
                           <p className="text-sm text-gray-500 pb-sm short-words h-7 leading-7">
                             {hotFood.hasOwnProperty('OpenTime')
                               ? hotFood.OpenTime
-                              : hotFood.StartTime.substring(0, 10)}
+                              : hotFood.hasOwnProperty('OpenTime')
+                              ? hotFood.StartTime.substring(0, 10)
+                              : '詳見官網'}
                           </p>
 
                           <Link
@@ -442,7 +446,9 @@ function Home() {
                           <p className="text-sm text-gray-500 pb-sm short-words h-7 leading-7">
                             {hotActivities.hasOwnProperty('OpenTime')
                               ? hotActivities.OpenTime
-                              : hotActivities.StartTime.substring(0, 10)}
+                              : hotActivities.hasOwnProperty('OpenTime')
+                              ? hotActivities.StartTime.substring(0, 10)
+                              : '詳見官網'}
                           </p>
 
                           <Link

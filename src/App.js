@@ -50,7 +50,7 @@ function App() {
   // console.log('navBtnState', navBtnState);
 
   const paginate = (pageNumber) => {
-    console.log('pageNumber', pageNumber);
+    // console.log('pageNumber', pageNumber);
 
     // console.log('123');
     // console.log('currentPage', currentPage);

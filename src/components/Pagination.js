@@ -73,7 +73,7 @@ function Pagination() {
         );
       }
       // 非第一頁和最後一頁顯示
-      console.log('pageLength', pageLength);
+      // console.log('pageLength', pageLength);
       for (let i = startPage; i < pageLength; i++) {
         if (i <= totalPages - 1 && i > 1) {
           pages.push(

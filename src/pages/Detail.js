@@ -105,7 +105,7 @@ function Detail() {
     // 1.5秒後關閉指示器
     setTimeout(() => {
       setDetailIsLoading(false);
-    }, 500);
+    }, 1500);
   }, []);
 
   // API ID & KEY 加密

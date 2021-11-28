@@ -68,7 +68,7 @@ function Activities() {
     // 0.5秒後關閉指示器
     setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1500);
   }, []);
 
   let history = useHistory();
@@ -134,7 +134,7 @@ function Activities() {
                   </span>{' '}
                   ，地區：
                   <span className="text-primary">
-                    {searchCityClick === '' ? '無' : searchCityClick}
+                    {searchCityClick === '' ? '全部縣市' : searchCityClick}
                   </span>{' '}
                   ，共{' '}
                   <span className="text-primary">{displayPosts.length}</span>{' '}
@@ -147,7 +147,7 @@ function Activities() {
                   </span>{' '}
                   ，地區：
                   <span className="text-primary">
-                    {searchCityClick === '' ? '無' : searchCityClick}
+                    {searchCityClick === '' ? '全部縣市' : searchCityClick}
                   </span>{' '}
                   ，
                 </p>
@@ -192,7 +192,9 @@ function Activities() {
                       <p className="text-sm text-gray-500 pb-sm short-words h-7 leading-7">
                         {item.hasOwnProperty('OpenTime')
                           ? item.OpenTime
-                          : item.StartTime.substring(0, 10)}
+                          : item.hasOwnProperty('OpenTime')
+                          ? item.StartTime.substring(0, 10)
+                          : '詳見官網'}
                       </p>
 
                       <Link
