@@ -120,6 +120,7 @@ function App() {
           setNavBtnState,
           totalPosts,
           totalPages,
+          setStartPage,
         }}
       >
         <Router>

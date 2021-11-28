@@ -35,12 +35,14 @@ function Food() {
     setNavBtnState,
     setCurrentPage,
     navBtnState,
+    setStartPage,
   } = useMyContext();
 
   useEffect(() => {
     // 先開起載入指示器
     setIsLoading(true);
     setCurrentPage(1);
+    setStartPage(1);
 
     setNavBtnState({
       menu: 'hamburger',
