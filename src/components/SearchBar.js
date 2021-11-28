@@ -16,6 +16,7 @@ function Banner() {
     searchCityClick,
     setSearchCityClick,
     setCurrentPage,
+    setStartPage,
   } = useMyContext();
 
   useEffect(() => {
@@ -74,6 +75,7 @@ function Banner() {
     setSearchWordClick(searchWord);
     setSearchCityClick(searchCity);
     setCurrentPage(1);
+    setStartPage(1);
   };
 
   return (

@@ -101,7 +101,7 @@ function Activities() {
       '"';
     return { Authorization: Authorization, 'X-Date': GMTString };
   };
-  // console.log('currentPosts', currentPosts);
+  console.log('currentPosts', currentPosts);
 
   return (
     <>
@@ -159,59 +159,65 @@ function Activities() {
                 </p>
               </div>
               <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8 gap-6">
-                {currentPosts.map((item, i) => (
-                  <div className="group shadow-md rounded-xl" key={item.ID}>
-                    {JSON.stringify(item.Picture) === '{}' ||
-                    !item.Picture.hasOwnProperty('PictureUrl1') ? (
-                      <div className="w-full h-60 bg-secondary rounded-t-xl overflow-hidden group-hover:opacity-75 aspect-none flex items-center text-secondary">
-                        <div className="mx-auto">
-                          <AiOutlinePicture className="text-7xl  mx-auto" />
-                          <p>此景點未提供照片</p>
+                {currentPosts.length !== 0 ? (
+                  currentPosts.map((item, i) => (
+                    <div className="group shadow-md rounded-xl" key={item.ID}>
+                      {JSON.stringify(item.Picture) === '{}' ||
+                      !item.Picture.hasOwnProperty('PictureUrl1') ? (
+                        <div className="w-full h-60 bg-secondary rounded-t-xl overflow-hidden group-hover:opacity-75 aspect-none flex items-center text-secondary">
+                          <div className="mx-auto">
+                            <AiOutlinePicture className="text-7xl  mx-auto" />
+                            <p>此景點未提供照片</p>
+                          </div>
                         </div>
-                      </div>
-                    ) : (
-                      <div className="w-full h-60 bg-gray-200 rounded-t-xl overflow-hidden     group-hover:opacity-75 aspect-none">
-                        <img
-                          src={item.Picture.PictureUrl1}
-                          alt=""
-                          className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
-                        />
-                      </div>
-                    )}
-                    <div className="m-6 ">
-                      <div className="pb-sm flex justify-start items-center">
-                        <img src={location} className="pr-sm" />
-                        <p className="text-sm text-gray-500 font-semibold text-sm short-words">
-                          {item.hasOwnProperty('Address')
-                            ? item.Address
+                      ) : (
+                        <div className="w-full h-60 bg-gray-200 rounded-t-xl overflow-hidden     group-hover:opacity-75 aspect-none">
+                          <img
+                            src={item.Picture.PictureUrl1}
+                            alt=""
+                            className="w-full h-full object-center object-cover transform transition duration-500 hover:scale-110"
+                          />
+                        </div>
+                      )}
+                      <div className="m-6 ">
+                        <div className="pb-sm flex justify-start items-center">
+                          <img src={location} className="pr-sm" />
+                          <p className="text-sm text-gray-500 font-semibold text-sm short-words">
+                            {item.hasOwnProperty('Address')
+                              ? item.Address
+                              : '詳見官網'}
+                          </p>
+                        </div>
+                        <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base short-words h-7">
+                          <a href="#"> {item.Name}</a>
+                        </h3>
+                        <p className="text-sm text-gray-500">開放時間</p>
+                        <p className="text-sm text-gray-500 pb-sm short-words h-7 leading-7">
+                          {item.hasOwnProperty('OpenTime')
+                            ? item.OpenTime
+                            : item.hasOwnProperty('OpenTime')
+                            ? item.StartTime.substring(0, 10)
                             : '詳見官網'}
                         </p>
-                      </div>
-                      <h3 className="text-sm text-gray-700 pb-sm font-semibold text-base short-words h-7">
-                        <a href="#"> {item.Name}</a>
-                      </h3>
-                      <p className="text-sm text-gray-500">開放時間</p>
-                      <p className="text-sm text-gray-500 pb-sm short-words h-7 leading-7">
-                        {item.hasOwnProperty('OpenTime')
-                          ? item.OpenTime
-                          : item.hasOwnProperty('OpenTime')
-                          ? item.StartTime.substring(0, 10)
-                          : '詳見官網'}
-                      </p>
 
-                      <Link
-                        to={`/f2e/detail/${item.ID}`}
-                        className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
-                      >
-                        <span className="absolute inset-0 bg-primary"></span>
-                        <span className="absolute inset-0 flex justify-center items-center tracking-widest font-medium">
+                        <Link
+                          to={`/f2e/detail/${item.ID}`}
+                          className="border border-primary bg-white text-primary tracking-widest font-medium px-md py-sm rounded hover:bg-primary-200  hover:text-white inline-block flex justify-center relative btn overflow-hidden"
+                        >
+                          <span className="absolute inset-0 bg-primary"></span>
+                          <span className="absolute inset-0 flex justify-center items-center tracking-widest font-medium">
+                            查看詳情
+                          </span>
                           查看詳情
-                        </span>
-                        查看詳情
-                      </Link>
+                        </Link>
+                      </div>
                     </div>
+                  ))
+                ) : (
+                  <div className=" col-span-3 bg-secondary shadow-md h-60 w-full flex items-center justify-center text-secondary ">
+                    <p>目前無符合的搜尋結果</p>
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </div>
