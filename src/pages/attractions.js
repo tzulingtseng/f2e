@@ -72,7 +72,7 @@ function Attractions() {
     // 0.5秒後關閉指示器
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 2500);
   }, []);
 
   let history = useHistory();

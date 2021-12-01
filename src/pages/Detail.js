@@ -181,6 +181,10 @@ function Detail() {
               <div className="m-6 lg:px-0 md:px-xl">
                 <h2 className="text-2xl font-bold py-md">介紹</h2>
                 <p>{detail.Description}</p>
+                {/* <h2 className="text-2xl font-bold py-md">評論區</h2>
+                <div className="bg-white h-36 rounded-xl shadow-xl">
+                  <p>評論區評論區評論區評論區評論區評論區評論區評論區</p>
+                </div> */}
                 <h2 className="text-2xl font-bold py-md">景點地圖</h2>
                 <MapContainer
                   center={[

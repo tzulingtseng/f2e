@@ -125,6 +125,8 @@ function Pagination() {
   };
 
   // const executeScroll = () => myRef.current.scrollIntoView();
+  // console.log('currentPage', currentPage);
+  // console.log('totalPages', totalPages);
 
   return (
     <>
@@ -183,7 +185,7 @@ function Pagination() {
           {getPages()}
           {/* 下一頁按鈕 */}
           <button
-            className="flex w-6 h-6  ml-1 justify-center items-center rounded-full border border-gray-200 bg-white text-black hover:border-gray-30 text-primary"
+            className="md:flex hidden w-6 h-6  ml-1 justify-center items-center rounded-full border border-gray-200 bg-white text-black hover:border-gray-30 text-primary"
             href="#"
             title="Next Page"
             style={{
